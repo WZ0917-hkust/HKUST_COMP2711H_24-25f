@@ -1,0 +1,150 @@
+\newif\ifdebug
+%\debugtrue
+\ifdebug
+\documentclass[12pt,a4paper]{ctexrep}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{markdown}
+%\usepackage{china2e} 
+\usepackage[utf8]{inputenc}
+\begin{document}
+\fi
+
+\chapter{Numbers Theory数论}
+Divisibility and Greatest Common Divisor, Prime Factorizations and the Fundamental Theorem of Arithmetic, Congruence, Modular Multiplicative Inverse and the Chinese Remainder Theorem, Fermat's Little Theorem, Euler's Theorem, Wilson's theorem, Diffie-Hellman-Merkle Key Exchange and El-Gamal Encryption, RSA Encryption and Digital Signatures
+\section{基本定义}
+\paragraph{}
+The set of integers:$\mathbb{Z}$ 
+
+Predeccessor, successor
+
+Addition, subtraction, multiplication, absolute value
+
+Division: Let $a,b \in \mathbb{Z}, b>0$, there exist unique $q,r \in \mathbb{Z}$, such that $a=q\times b+r$ and $0\leq r < b$. $a|b$ means there exists integer $x$ that $b = xa$
+
+Greatest Common Divisor(最大公约数): $d|a \wedge d|b$ and $d$ is the greatest.
+
+Relatively prime(互质): $a\perp b \Leftrightarrow gcd(a,b) = 1$
+
+Least Common Multiple(最小公倍数): $a|l \wedge b|l$ and $l$ is the smallest.
+
+Prime numbers(质数): a integer $p>1$ is prime iff its only divisors are $1,p,-p,-1$
+
+Congruence(同余): $a\equiv b(mod n) \Leftrightarrow n|a-b$. It can be denoted as $a=_n b$
+
+Modular Multiplicative Inverse(MMI): Fixing $n$, $a^{-1}$ is an integer such that $a^{-1}a =_n 1$.
+
+\section{定理/结论}
+(Lemma)$\forall a,b \in \mathbb{Z}, b>0$, there exist a $q \in \mathbb{Z}$ such that $q \times b >a$
+
+For $\forall a,b \in \mathbb{Z}$,where $b \neq 0$, there exist unique $q$ and $r$ such that $a = b\times q+r, 0\leq r<b$
+
+Properties of division:
+$a|0$, $1|a$, $a|1 \Leftrightarrow a\in \{1,-1\}$, $a|b \wedge c|d \Rightarrow ac|bd$, $a|b \wedge b|c \Rightarrow a|c$, $a|b \wedge b|a \Rightarrow a \in \{b,-b\}$, $a|b \wedge a|c \Rightarrow a|(cx+by)$ for every $x,y$\\
+
+For $\forall a,b \in \mathbb{Z}$, $a,b$ are not both 0, then $\exists x,y \in \mathbb{Z}, gcd(a,b) = ax+by$.
+
+Corollary:
+$\forall a,b \in \mathbb{Z}$, $a,b$ are not both 0, $\{ax+by|x,y \in \mathbb{Z}\} = \{q \times gcd(a,b)|q \in \mathbb{Z}\}$
+
+If $gcd(a,b)=d$, then $gcd(\frac{a}{d},\frac{b}{d}) = 1$
+
+If $a|c \wedge b|c$ and $a \perp b$, then $ab|c$
+
+(Euclid's Lemma)
+If $a|bc$ and $gcd(a,b) = 1$, then $a|c$
+
+If $a,b \in \mathbb{Z}^+, a = bq+r, 0\leqslant r < b$, then $gcd(a,b) = gcd(b,r) = d$
+
+Let $a,b$ be non-zero positive integers, for negatives, find the absolute value. $gcd(a,b) \times lcm(a,b) = a\times b$
+
+Corollary:
+If $a,b$ are positive numbers and they are relatively prime, then $lcm(a,b) = a \times b$
+
+If $p$ is prime and $p|ab$, then $p|a$ or $p|b$ is true.
+
+Corollary:
+If $p|a_1a_2\dots a_n$ where $a_i$ is a integer, then, $\exists i$ such that $p|a_i$
+
+Corollary:
+If $p|q_1q_2\dots q_n$ where $q_i$ is a prime, then, $\exists i$ such that $p = q_i$
+
+$\bold{F}$undamental $\bold{T}$heorem of $\bold{A}$rithmetic (Prime factorization):
+For every integer $n>1$, we can write $n = p_1\times p_2 \times p_3 \times \dots \times p_k$ where every $p_i$ is prime. 存在性，唯一性，对所有$n$都成立\\
+
+There are infinitely many primes.
+
+$a=_nb \iff$ $a$ and $b$ have the same remainders when divided by $n$
+
+Properties of congruences:
+$a=_na$, $a=_nb \Leftrightarrow b=_na$, $a=_nb \wedge b=_nc \Rightarrow a=_nc$, $a=_nb \wedge c=_nd \Rightarrow a+b=_nc+d , ab=_ncd$, $a=_nb \Rightarrow ac=_nbc, a+c =_n b+c$, $a+c=_b+c \Rightarrow a=_nb$, $a=_nb \Rightarrow a^k=_nb^k$, $\bold{wrong:}\; ac=_nbc \nRightarrow a=_nb$\\
+
+Applications of MMI:
+
+1.Suppose $ab =_n ac, \, d=gcd(a,n)$, then $ b\equiv c\,(mod\,\frac{n}{d})$
+
+2.Write number $x$ in base $n+1$, the sum of its digits is divisible by $n$ iff the number is divisible by $n$ ($\because n+1 =_n 1$, $\therefore \forall i, (n+1)^i =_n 1^i = 1$, $\therefore x=\sum_{i=0}^j x_i\times(n+1)^i =_n \sum_{i=0}^j x_i$)
+
+Let $P(x)$ be a polynominal function, if $a =_n b$, then $P(a) =_n P(b)$\\
+
+Fermat's Little Theorem:
+If $p\nmid a$, then $a^{p-1} =_p 1$ ($p$ is prime)
+
+Euler's totient function:
+$\varphi(n) = |\{a|1\leqslant a \leqslant n, a\perp n\}|$. Let $n=\Pi_{i=1}^k {p_i}^{\alpha_i}$, then $\varphi(n) = n\times \Pi_{i=0}^k (1-\frac{1}{p_i})$
+
+Euler's Theorem:
+Let $a \perp n$, then $a^{\varphi(n)} =_n 1$
+
+Wilson's Theorem:
+For every $p$ ($p$ is prime), $(p-1)! =_p -1$
+
+$\bold{NEED\, TO\, SEE\, HOW\, THEY\, ARE\, PROVED!!!}$
+
+\section{Algorithms算法}
+\subsection{Euclidean Algorithm}
+To find the greatest common divisor of two numbers:
+
+If $b|a$, then return b, else, $gcd(a,b) = gcd(b,a\%b)$
+\subsection{Fast Modular Exponentiation}
+To calculate $a^b (mod\, c)$, first write $b$ in base 2, then $a^b =_c a^{b_1} \times a^{b_2} \times \dots \times a^{b_n} =_c a^{b_1}(mod\, c) \times a^{b_2}(mod\, c) \times  \dots \times a^{b_n}(mod\, c)$ where $b_i$ is $2^j$. Calculate iteratively $a^{2^n} (mod\, c)$.
+
+\section{重要定理详解}
+\subsection{Infinitely many prime}
+Suppose $p_1,p_2,\dots,p_n$ are all the primes, let $q = p_1\times p_2\times \dots \times p_n+1$, then $p_i \nmid q$ for every $p_i$, so $q$ is a prime, contradiction!
+
+\subsection{Modular Multiplicative Inverse} 
+For $a,n$, construct a graph $G=(V=[n-1],E=(x,(x+a)\%n))$. If "$a$" and "1" are on the same cycle, then $a^{-1}$ exists.
+
+Proof: $gcd(a,n) = d$, then $d = ax+ny$, $d =_n ax$,$kd =_n kax$, then all multiples of $d$ are on the cycle containing "0", if "1" is on the same cycle, then $\exists x$ such that $ax =_n 1$, $a^{-1} = x$.
+
+$\because$ "1" is on the same cycle as "0" if and only if $gcd(a,n)=1$
+
+$\therefore$ the number $a$ has a mmi $mod\, n$ iff $gcd(a,n)=1$.
+
+\subsection{Chinese Remainder Theorem}
+A system of linear congruences: $x =_{n_i} a_i$ where every $n_i$ is relatively prime to each other, have a unique solution. $x-a_i = k_i n_i$, $a_i-a_j = k_in_i-k_jn_j = m_{i,j} \times gcd(n_i,n_j)$, $gcd(n_i,n_j)|a_i-a_j$. 
+
+The solution of $x$ is $x\equiv lcm(a_1,a_2,\dots,a_i) (mod\, n_1n_2\dots n_i)$
+
+\section{Encryption $\&$ Decryption}
+\subsection{Symmetric Encryption}
+$\overline{m} = Enc(m,key)$ and $m = Dec(\overline{m},key)$
+Diffie-Hallman-Merkle key exchange: chooses a very big prime number $p$ and a primitive root $g$ ($\{g^0,g^1,\dots, g^{p-2}\} = \{1,2,3,\dots, p-1\}$ when modulo $p$). Then Alice$\rightarrow$Bob $g^a$ and Bob$\rightarrow$Alice $g^b$, Alice and Bob have a common key $g^{ab} mod\, p$
+
+\subsection{Asymmetric Encryption}
+En-Gamal Encryption: Very complicated...%待补充
+
+RSA Encryption:
+$e,d \in \{0,1,\dots,n-1\}$, $Enc_e(m) = m^e (mod\, n)$, $Dec_d(\overline{m} = \overline{m}^d (mod\, n)$. Then, $m^{ed} =_p m$, $m^{ed-1} =_p 1$. By Fermat's Little Theorem, $ed =_{p-1} 1$, $d = e^{-1} (mod\, p-1)$. Keygen: pick two large primes $p$ and $q$, calculate and announce $n = p \times q$. Pick $d$, calculate and announce $e = d^{-1} (mod\, lcm(p-1,q-1)$. Only the person knowing $p,q,d$ can decrypt, and anyone knowing $n,e$ can encrypt.
+
+Digital Signature:
+Do RSA two times, each with each other's public key.
+
+\ifdebug
+\end{document}
+\fi
