@@ -1,1 +1,3 @@
-# HKUST_COMP2711H_24-25f
+# HKUST_COMP2711H_24-25fall
+
+The main repo of COMP2711H.
