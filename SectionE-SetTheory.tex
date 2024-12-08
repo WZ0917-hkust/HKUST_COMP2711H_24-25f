@@ -1,0 +1,224 @@
+\newif\ifdebug
+%\debugtrue
+\ifdebug
+\documentclass[12pt,a4paper]{ctexrep}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{markdown}
+%\usepackage{china2e} 
+\usepackage[utf8]{inputenc}
+\usepackage{chemarrow}
+\begin{document}
+\fi
+
+\chapter{Set Theory集论}
+Russell's Paradox and Zermelo–Fraenkel Axioms, Axiom of Infinity and Bijections, Countability and the Theorems of Cantor, Tarski and Schr\"oder–Bernstein， The Set of Real Numbers， $|\mathbb{R}|=|P(\mathbb{N})|$ and the Axiom of Choice
+\section{定义}
+\subsection{ZFC公理}
+\subsubsection{ZF1: Extensionality}
+Two sets are equal iff they have the same element.
+
+$(X=Y) \iff (\forall z, z\in X \iff z\in Y)$
+
+\subsubsection{ZF2: Empty Set}
+There is a set with no elements.
+
+$\exists X, \forall y, y \notin X$
+
+\subsubsection{ZF3: Unordered Pairs}
+If $X$ and $Y$ are sets, there is a set $\{x,y\}$ whose elements are exactly $X$ and $Y$.
+
+$\forall X,Y, \exists Z$ such that $(X \in Z \wedge Y \in Z \wedge(\forall W, W\in Z \Rightarrow (W = X \vee W = Y)))$
+%? wikipedia 里没有后面这一串W的
+\subsubsection{ZF4: Union}
+If $X$ is a set of sets, then there is a set ($A$ in the formula below) consisting of all elements of all elements of $X$.
+
+$\forall X, \exists A, \forall Y,x, (x \in Y\wedge Y \in X \Rightarrow x \in A)$
+
+$A = \cup X = \{x| x\in Y \wedge Y\in X\}$
+
+\subsubsection{ZF5: Comprehension}
+If $\varphi(Z,w_1,w_2,\dots,w_n)$ is a formula in $L$ with free variables $Z,w_1,w_2,\dots,w_n$, and $X$ is a set and $a_1,a_2,\dots,a_n$ are sets then $\{y\in X| \varphi(y,a_1,a_2,\dots,a_n)\}$ is a set. 
+
+\subsubsection{ZF6: Powerset}
+Let $X$ be a set, there is a set $Y$ whose elements are all subsets of $X$. $Y = \mathbb{P}(X)$
+
+$\forall X, \exists Y, \forall Z : Z \subseteq X \Rightarrow Z \in Y$
+
+\subsubsection{ZF7: Axiom of infinity}
+There is a inductive set $\exists X, [\emptyset \in X \wedge (\forall y, y \in X \Rightarrow y \cup \{y\} \in X)] = inductive(X)$
+
+\subsubsection{ZF8: Replacement}
+If $\varphi(x,y)$ is a class function and $X$ is a set, then there is a set $Y$ containing exactly $y$s such that $\exists x, \varphi(x,y)$
+
+\subsubsection{ZF9: Foundation}
+Every set $X$ contains an $\epsilon$-minimal element.
+
+$\forall x, \exists y, y \in x \wedge x\cap y = \emptyset$
+
+$\forall x, \exists y, y \in x \wedge \forall z \in x \Rightarrow z \notin y$
+
+\subsection{Axiom of Choice}
+Every two sets are comparable
+
+1)For every two sets $A$ and $B$, either $|A| \leqslant |B|$ or $|B|\leqslant|A|$
+
+2)For any relation $R$, there's a function $F \subseteq \mathbb{R}$ such that $domain(F) = domain(\mathbb{R})$
+
+3)For every set $A$, there's a function $F: \mathbb{P}(A) \setminus\{\emptyset\} \mapsto A$ such that $\forall B \subseteq A, B \neq \emptyset \Rightarrow F(B) \neq B$
+
+4)For every set $A$ of non-empty disjoint sets, there is a set $C = \cup A$, such that $\forall a \in A, |a\cap C| = 1$
+
+5)Zorn's Lemma: Let $A$ be a set such that for every chain $B \subseteq A$, we have $\cup B \in A$, then $A$ has a maximal element.
+\subsection{基本定义}
+Ordered Pairs: $\langle x,y\rangle := \{\{x\},\{x,y\}\}$
+
+Class: a collection of the form $X=\{x|\varphi(x)\}$
+
+Cartesian Product: Let $X,Y$ be sets, then $Z = X \times Y = \{\langle x,y\rangle|\forall x\in X, \forall y \in Y\}$. $Z \in \mathbb{P}(\mathbb{P}(X \cup Y))$
+
+Relation: A relation is a subset from $X$ to $Y$: $R\subseteq X\times Y$. Denote it as $X\,R\,Y$
+
+Function: A relation $R \subseteq X \times Y$ is a function $R:X \rightarrow Y$
+
+Successor: If $X$ is a set, $s(X) := X \cup \{X\}$
+
+Inductive: A set is inductive if $0\in X$ and $\forall y \in X \rightarrow s(y) \in X$
+
+Finite Sets: A set $X$ is finite if there is a $N \in \mathbb{N}$ and a function $f:X \rightarrow N$ such that $f$ is one-to-one and onto
+
+Infinite Sets: A set $X$ is infinite if $X$ is not finite.
+
+Cardinality(set的大小): Let $X$ and $Y$ be two sets, then $|X| = |Y|$ or $X\sim Y$ iff there is a bijection $f:X \leftrightarrow Y$. 
+
+Property of Cardinality: \\$\indent$
+$\forall X, X \sim X$\\$\indent$
+$\forall X,Y,Z, X\sim Y \wedge Y\sim Z \Rightarrow X \sim Z$\\$\indent$
+$\forall X,Y, X\sim Y \Leftrightarrow Y \sim X$
+
+$|X|\leqslant|Y|$ if there exists a one to one function that maps $X$ to $Y$
+
+$\bold{Countable}$: A set is countable if it has the same size as the size of natural numbers. Some examples of countable sets are: the set of even numbers $E$, the set of prime numbers $P$, the set of $k$ natural numbers' Cartesian product $\mathbb{N} \times \mathbb{N} \times \dots\mathbb{N} = \mathbb{N}^k$
+
+Decimal Expansions: 0.$\overline{a_1a_2a_3\dots} = \sum_{i=1} \frac{a_i}{10^i}$\\
+
+Order: Let $A$ be a set. An order on $A$ is a relation $"<"\in A\times A$such that for $\forall a,b \in A$, there are three cases: $a<b,a=b,a>b$ and $\forall a,b,c \in A, a<b \wedge b<c \Rightarrow a<c$
+
+In an ordered set $U$ and $A \subseteq U$,
+
+Upper bound: An element $b \in U$ is an upper bound of $A$ if $\forall a \in A, a \leqslant b$. Let $B$ be all upper bounds of $A$.
+
+Supremum: If there $\exists s \in B$ such that $\forall a \in A, a \leqslant s, \forall s' \in B, s \leqslant s'$. Then $s$ is the supremum of $A$, $s = sup(A)$.
+
+Least Upper Bound Property: If $U$ is an ordered set, then $U$ has the LUB property if every non-empty sunset of $U$ \textbf{that has an upper bound}, also has a supremum.
+
+The definition of lower-bound, infimum, largest-lower-bound property is similar.
+
+Dedekind Cut: A cut is a subset $A \subseteq \mathbb{Q}$ such that ($A \neq \mathbb{Q}$ and $A \neq \emptyset$), (If $a \in A$ and $a' \in \mathbb{Q}$ and $a' < a$, then $a' \in A$), ($A$ does not have a maximum).
+
+Define $\mathbb{R} = \{A \subseteq \mathbb{Q}|A$ is a cut$\}$
+
+Define comparison on $\mathbb{R}$: Let $a,b \in \mathbb{R}$, $a \leqslant b \iff a \subseteq b$
+Define addition on $\mathbb{R}$: Let $a,b \in \mathbb{R}$, $a+b = \{x+y|x \in a, y \in b\}$
+
+Chain: a set $C$ is a chain if $\forall x,y \in C, x \subseteq y \vee y \subseteq x$
+\section{定理/结论}
+The empty set is unique.
+
+Let $x,y,a,b$ be sets, $\langle x,y \rangle = \langle a,b \rangle \iff x=a \wedge y=b$
+
+There is a unique set $\mathbb{N}$, such that $\mathbb{N}$ is inductive and for every inductive $X$, we have $X\in \mathbb{N}$
+
+Let $X$ be a set, then $X \notin X$
+
+Let $E$ be the set of even numbers, $|E|=|\mathbb{N}|$: $f:n\mapsto 2n$
+
+Let $P$ be the set of prime numbers, $P=\{p_1,p_2,\dots\}$, $|P|=|\mathbb{N}|$: $f:n \mapsto i$ of $p_i$
+
+$|\mathbb{N} \times \mathbb{N}| = |\mathbb{N}|$
+
+the countable union of countable sets is also countable.
+
+If $A$ is infinite, then $A\setminus \{a\}$ is also infinite.
+
+If $A$ is infinite, then there $\exists X \subseteq A$ such that $|X| = |\mathbb{N}|$
+
+If $A$ is countable and $X$ is infinite, then $A \cup X$ is also countable.\\
+
+Cantor's Theorem:
+For every set $A$, $|\mathbb{P}(A)| \neq |A|$ (Proof by contradiction)
+
+Tarski's Theorem:
+%需要进一步解释 %"Btw, I'm not going to give you questions that are this hard in the exams"
+Let $X$ be a set. A function $h: \mathbb{P}(X)\mapsto \mathbb{P}(X)$ such that if $A \subseteq B$, then $h(A) \subseteq h(B)$. There exists $C \subseteq X$, such that $h(C)=C$
+
+Schr\"odger-Bernstein's Theorem:
+If $|X| \leqslant |Y|$ and $|Y| \leqslant |X|$ then $|X| = |Y|$.\\
+
+$0\leqslant x < 1$ is a terminating/ repeating/ mixed decimal expansion, $\iff$ $x$ is a rational number.
+
+If $U$ is an ordered set, then $U$ has the largest-lower-bound property if $U$ also satisfies the largest-lower-bound property.
+
+$\mathbb{R}$ has the supremum property (Least-upper-bound property).
+
+Every number $x\in \mathbb{R}$ has an infinite decimal expansion.
+
+If $a,b,c,d \in \mathbb{R}$, then $|[a,b]| = |(a,b)| = |(a,b]| = |[a,b)| = |[c,d]| = $ infinite.
+
+"Rationals are dense in Reals": $\forall x,y \in \mathbb{R}, x<y \Rightarrow \exists z \in \mathbb{Q} x<z<y$
+
+$|(0,1)| = |(1,+\infty)|$. Proof: $f: x \mapsto \frac{1}{x}$
+
+$|\mathbb{R}| = |(0,1)|$. Proof: $f: (-\infty,-1)\mapsto(0,\frac{1}{3})$, $g: [-1,1]\mapsto[\frac{1}{3},\frac{2}{3}]$, $h: (1,+\infty)\mapsto(\frac{2}{3},1)$
+
+$|\mathbb{R}| = |\mathbb{P}(\mathbb{N})|$
+
+A maximal element of $A$ is an event $m \in A$, such that $\forall a \in A, a \neq m \Rightarrow m \nsubseteq a$
+%\section{Algorithms}
+
+\section{重要定理详解}
+\subsection{$\mathbb{Q}$ is countable} 
+$\mathbb{Q} = \{\frac{a}{b}|(a,b),a \in \mathbb{Z},b\in \mathbb{N}\setminus\{0\},gcd(a,b) = 1\}$. 
+
+$\therefore \mathbb{Q} \subseteq \mathbb{Z}\times \mathbb{N}$
+
+$f: \mathbb{Q}\xrightarrow{1-1}\mathbb{Z}\times\mathbb{N}\autorightarrow{1-1}{onto}\mathbb{N}^2\autorightarrow{1-1}{onto}\mathbb{N}$. $f$ exists, so $|\mathbb{Q}|\leqslant|\mathbb{N}|$
+
+$\because g:\mathbb{N}\mapsto \mathbb{Q}$
+
+$\therefore |\mathbb{N}|\leqslant|\mathbb{Q}|$
+
+$\therefore |\mathbb{Q}| = |\mathbb{N}|$
+\subsection{$\mathbb{P}$ is countable}
+$f$ takes a finite sequence $a_1,a_2,\dots$, and maps it to $2^{a_1}\times3^{a_2}\times\dots\times p_i^{a_i} \times\dots$. Then, remove the 0s at the end of the sequence, set there are $i$ 0s removed. Let the set of all the finite sequences be $X$, and $\overline{X}$ is the set of all finite sequence with the end 0s removed. By the Arithmetic Fundamental Theorem, $f$ maps $\overline{X}$ to $\mathbb{N}$ and is one-to-one and onto. $g(X) = (i,f(\overline{X})$, $g:X \mapsto \mathbb{N}^2$ is one-to-one and onto. Therefore $\mathbb{P}$ is countable.
+
+
+\section{方法}
+\subsection{About sth. that is not countable}
+\subsubsection{Vitali Set}
+$\mathbb{R}$ is uncountable, $\mathbb{Q}$ is countable $\Rightarrow$ the set of irrational numbers are uncountable.
+
+Define "+" between a (const)number $n$ and a (const)set $A$: $A' = n+A \iff \forall x\in A, x+n \in A' \wedge y \in A', y-n \in A$
+
+We can partition $R$ into uncountably many subsets $V_i$, where each $V_i$ satisfies:
+
+$\forall i,j, \forall a\in V_i, \forall b \in V_j, a \neq b$
+
+$\forall i, \forall a,b \in V_i, a-b \in \mathbb{Q}$
+
+then choose arbitrarily an element from each $V_i$, these elements form a set $V$, $\because |V| = $ the number of $V_i$s $= |$ the number of irrational numbers $|$, $\therefore V $ is uncountable.
+
+\subsubsection{Proof by contradiction}
+Let $F = \{f|f:\mathbb{N}\mapsto\{0,1\}\}$,i.e. mapping each $\mathbb{N}$ to every subset of $\mathbb{N}$.
+
+Set $g:\mathbb{N}\mapsto F$ is a bijection, 
+
+there exists a number $t$ where $t[i] = 1-g(i)[i]$, i.e.$\forall i, g(i) \neq t$. Therefore we found a $t \in F$, where no $g$ can map to it. 
+
+\ifdebug
+\end{document}
+\fi

@@ -1,0 +1,129 @@
+\newif\ifdebug
+%\debugtrue
+\ifdebug
+\documentclass[12pt,a4paper]{ctexrep}
+\usepackage[a4paper, portrait, margin=0.8in]{geometry}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{markdown}
+%\usepackage{china2e} 
+\usepackage[utf8]{inputenc}
+\begin{document}
+\fi
+
+\chapter{Game Theory游戏论}
+Nim and the Sprague-Grundy Theorem, One-shot Games and Nash Equilibria， Two-player Infinite-duration Games on Graphs
+\section{定义}
+\subsection{基本定义}
+Topological Ordering: Given a DAG $G = (V,E)$, a topological ordering is a permutation $\pi$ of vertices such that $\forall e = (u,v)$, the vertex $u$ appears before $v$ in $\pi$.
+
+Dominant Strategy: A strategy $s_i \in S_i$ is dominant if $\forall s_i, u_i(s_i,s_{-i}) \geqslant u_i(s_{i'},s_{-i'})$. A rational player is always going to take the dominant strategy.
+
+Equilibrium State: A state where no one wants to change. (i.e. If only one person changes, then his payoff will decrease)
+
+Nash Equilibrium: Nash Equilibrium is a concept that occurs when each player in a non-cooperative game chooses and stays with their optimal strategy in response to knowing other players' anticipated strategies. Also, no player in a Nash equilibrium has a dominant strategy.
+
+Pure Nash Equilibrium: An outcome $s = (s_1,s_2,\dots)$ is a nash equilibrium iff $\forall i, \forall s'_i, u_i(s_i,s_{-i}) \geqslant u_i(s'_i,s'_{-i})$. Nobody plays randomly in a Pure Nash Equilibrium.
+
+Mixed Nash Equilibrium: Somebody plays randomly, the expectation of other players cannot be increased by playing another strategy.
+
+$\divideontimes$ Nash Equilibrium only applies to games with finite players.\\
+
+Arena: A directed finite graph $G = (V,E,V_1,V_2)$ such that $\forall v \in V$, outdegree($v$)$\geqslant 1$, and $V_1 \cup V_2 = V$, $V_1 \cap V_2 = \emptyset$.
+
+Game: a arena $G = (V,E,V_1,V_2)$ and a starting vertex $v_0\in V$
+
+Strategy: A strategy for player $i$ is a function $\sigma_i = V^* \times V_i \mapsto V$. If the strategy is memoryless, than $V^*$ is  nothing.
+
+Outcome: An outcome is an infinite walk on $G$ starting at $v_0$. $o(\sigma_1)$ is the outcome for the player who uses $\sigma_1$ as his strategy. $O$ is all outcomes of the game.
+
+objective: An objective for player 1 is a set $Obj_1 \subseteq O$.
+
+Zero-Sum game: $Obj_2 = O \setminus Obj_1$
+
+Winning Strategy: A strategy $\sigma_1$ for player 1 is a winning strategy if for $\forall \sigma_2, o(\sigma_1,\sigma_2） \in Obj_1$. The set of initial states from which player i has a winning strategy is $Win_i$.
+
+Determined: A game is determined if for $\forall v_0$ either player 1 or player 2 has a winning strategy.
+\section{重要游戏}
+\subsection{Nim}
+Two numbers, lose if one can't decrease any heap.
+
+Turn-based, finite game, impartial.
+
+We can model these kind of games with directed graphs, where each state in the game corresponds a vertex and a state change corresponds a edge. Assign a "W" or "L" to every vertex. A vertex $v$ is "W" if there's an outgoing edge to "L", but $v$ is "L" if all outgoing edges lead to "W".
+
+Bitwise xor($\oplus$): In base 2, output "1" if the two digits are not the same and output "0" if the two digits are the same. Apply this to every digit of two numbers.
+
+General Nim: We have number $a_1,a_2,\dots,a_n \in \mathbb{N}$ and each player can choose a number and decrease it in their turn. Then $L = \{(a_1,a_2,\dots,a_n)|\oplus_{i=1}^n a_i = 0\}$ and $W = \{(a_1,a_2,\dots,a_n)|\oplus_{i=1}^n a_i \neq 0\}$
+
+\subsection{One-Shot Games}
+A one-shot game consists of a set $S_i$ of strategies for each player, a payoff function $u_i: S_i \mapsto \mathbb{R}$. Each player chooses a strategy and the outcome of the game is set. Assume every player is rational, i.e. they choose to maximize their own payoff.
+\subsubsection{Prisoner's Dilemma}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+A  B & Confess & Silent\\
+\hline
+Confess & 4 4 & 1 5 \\
+\hline
+Silent & 5 1 & 2 2 \\
+\hline
+
+\end{tabular}
+Both want to minimize their prison time.
+\end{center}
+Then both will choose to confess because no matter what the other one choose, confessing gives them the least prison time.
+
+\subsubsection{Pollution Game}
+If a country pollutes, then he doesn't cost anything additional, but every country will cost "1". If a country does not pollute, then he will cost "5", and every country else will not cost anything. If everyone is rational, then everyone will pollute.
+
+\section{定理/结论}
+Every DAG have a topological ordering.
+
+\subsection{Sprague-Grundy Theorem}
+Assign a unber to every vertex in $G$: If $v$ has no outgoing edges, then assign $nim(v) = 0$. If $v$ has outgoing edges to $u_1,u_2,\dots,u_n$, then $nim(v) = max\{nim(u_1),nim(u_2),\dots, nim(u_n)\}+1$. Then $L = \{(a_1,a_2,\dots,a_n)|\oplus_{i=1}^n nim(a_i) = 0\}$ and $W = \{(a_1,a_2,\dots,a_n)|\oplus_{i=1}^n nim(a_i) \neq 0\}$
+
+\section{Algorithms}
+\subsubsection{Reachability game}
+Player 1's objective is to reach $T \subseteq V$
+
+Rule 1: $T \subseteq Win_1$
+
+Rule 2: If $v$ is a player 1 vertex, then $\exists (v,u) \in E, u \in Win_1 \Rightarrow v \in Win_1$
+
+Rule 3: If $v$ is a player 2 vertex, then $\forall (v,u) \in E, u \in Win_1 \Rightarrow v \in Win_1$
+
+This construction algorithm will terminate because there's finite number of vertices, $|Win_1|$ can't increase infinitely.
+
+Process: $T_0 = T$. $T_i = T \cup \{v \in V_1|\exists (v,u)\in E, u \in T_{i-1}\} \cup \{v \in V_2| \forall (v,u)\in E, u \in T_{i-1}\}$
+
+$Win_1$ = $\cup T_i$, denote it as $T_k$
+
+$Win_2$ = $V \setminus Win_1$
+
+Attractor: $Attr_1 = \cup T_i$
+\subsection{B\"uchi game}
+Player 1's objective is to reach $T \subseteq V$ infinitely many times. 
+
+By "Reachability Game", we are able to find $A_1$ = $Attr_1(T)$(Attracting player 1), $B_1 = A_1^C$(Trapping Player 1), and $C_1 = Attr_2(B_1)$ be the set of vertices that Player 2 can force the game to visit $B_1$, thus trapping Player 1, not letting Player 1 visit $T$ infinitely many times.
+
+Inside $C_1$, Player 2 will not let Player 1 achieve it's goal. Outside $C_1$, for player 1 vertices, player 1 has a outgoing edge that will not enter $C_1$ and will choose it; player 2 does not have a outgoing edge leading to $C_1$ (or it'll be in $C_1$).
+
+Thus, removing $C_1$ part of the whole graph will not affect the final answer to whether player 1 can achieve its goal or not. Remove $C_1$ and we have a smaller game $G_1 = G - C_1$.
+
+Repeat the process using $G_1$ and the same $T$. This process will terminate as $|G|$ is getting smaller every iteration and that $|G|$ is finite.
+
+At the end, $Win_2 = \cup_i C_i$, $Win_1 = V \setminus Win_2$\\
+
+%\begin{figure}
+\centering
+\includegraphics[scale=0.5]{buchi_game.png}
+%\end{figure}
+\section{重要定理详解}
+%可补充
+\ifdebug
+\end{document}
+\fi
