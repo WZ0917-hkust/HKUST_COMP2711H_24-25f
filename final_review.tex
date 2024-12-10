@@ -110,12 +110,12 @@ for [n], how many permutations $\pi$ have the property $\forall i, \pi[i] \neq i
 \subsection{PIE}
 Principle of inclusion and exclusion(PIE): Find the whole number of elements in $A_{1} \sim A_{n}$. \\$\indent$
 Generalized PIE: Find the number of elements $E(m)$ appearing in exactly $m$ of $A_{1} \sim A_{n}$. \\$\indent$
-$\star$经典习题：6 persons, every pair is either friends or enemy.$\Rightarrow$There must exist 3 people who are friends to each other of enemies to each other.
+$\star$经典习题：6 persons, every pair is either friends or enemy.$\Rightarrow$There must exist 3 people who are friends to each other or enemies to each other.
 \section{重要定理详解}
 \noindent PIE:\\$\indent$
 Let $A_{1}, A_{2}, \dots , A_{n}$ be finite sets.\\$\indent$
-Suppose x is in exactly r of the n sets.\\$\indent$
-This indicates that x is counted in $\binom{r}{1} \, A_{n}$ s, $\binom{r}{2} \, A_{n_{1}}\cap A_{n_{2}}$ s,$\dots$, $\binom{r}{r} \, A_{n_{1}}\cap A_{n_{2}} \cap \dots \cap A_{n_{r}}$ s.\\$\indent$
+Suppose $x$ is in exactly $r$ of the $n$ sets.\\$\indent$
+This indicates that $x$ is counted in $\binom{r}{1} \, A_{n}$ s, $\binom{r}{2} \, A_{n_{1}}\cap A_{n_{2}}$ s,$\dots$, $\binom{r}{r} \, A_{n_{1}}\cap A_{n_{2}} \cap \dots \cap A_{n_{r}}$ s.\\$\indent$
 $\because$ $-\binom{r}{0}+\binom{r}{1}-\binom{r}{2}+\dots+(-1)^{r+1}\binom{r}{r} +\binom{r}{0}= $ number of subsets with odd sizes - number of subsets with even sizes+1 = 1 \\$\indent$
 $\therefore$Set $\omega(t) = \sum_{i_{1},i_{2},\dots,i_{t}}|A_{i_{1}} \cap A_{i_{2}} \cap \dots \cap A_{i_{t}}|$\\$\indent$
 $\therefore$ $|\cup_{i=1}^{k} A_{i}| = \sum_{t=1}^{k} (-1)^{t+1} \omega(t)$\\$\indent$
@@ -124,7 +124,7 @@ $\therefore$ $|\cup_{i=1}^{k} A_{i}| = \sum_{t=1}^{k} (-1)^{t+1} \omega(t)$\\$\i
 \noindent Generalized PIE:\\$\indent$
 in a universe with n elements, $A_{1}, A_{2}, \dots , A_{n}$ are finite sets\\$\indent$
 $\omega(t) = \sum_{i_{1},i_{2},\dots,i_{t}}|A_{i_{1}} \cap A_{i_{2}} \cap \dots \cap A_{i_{t}}|$\\$\indent$
-$E(m)$ = the number of elements appearing in exactly m of $A_{1} \sim A_{n}$ = $\sum_{k=m}^{n} (-1)^{k-m} \binom{k}{m} \omega(k)$
+$E(m)$ = the number of elements appearing in exactly $m$ of $A_{1} \sim A_{n}$ = $\sum_{k=m}^{n} (-1)^{k-m} \binom{k}{m} \omega(k)$
 \section{方法}
 Principle of Addition (Case work principle)\\$\indent$
 Principle of Multiplication\\$\indent$
