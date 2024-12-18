@@ -9,6 +9,8 @@
 %\usepackage{china2e} 
 \usepackage[utf8]{inputenc}
 \usepackage{chemarrow}
+\usepackage[colorlinks,linkcolor=black]{hyperref}
+\usepackage{fancyhdr}
 
 \title{COMP2711H Review}
 \author{Based on Lectures from $A.K.Goharshady$. \\ Notes by $Zheng, Siyang$}
@@ -17,7 +19,12 @@
 \begin{document}
 \maketitle
 
+\hypertarget{toc}{}
 \tableofcontents
+
+
+\fancyfoot[R]{\hyperlink{toc}{back to contents}}
+\pagestyle{fancy}
 
 \include{SectionA-PropositionalLogic}
 \include{SectionB-Counting}
