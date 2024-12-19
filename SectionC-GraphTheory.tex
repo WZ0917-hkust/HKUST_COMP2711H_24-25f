@@ -132,6 +132,10 @@ $\divideontimes$a bipartite is a graph with $\chi(G)=2$
 Clique: $C\subseteq V$ is a clique if $\forall u,v \in C$,$(u,v)$ edge $\in E$,$\omega(G)$= size of the largest clique.即在clique中所有点全连着.
 
 Box Product: Let $G$, $H$ be graphs, $G\Box H =(V_{G} \times V_{H},E_{G \Box H})$
+
+\begin{center}
+\includegraphics[scale=0.3]{Box_Product.png}
+\end{center}
 \section{定理/结论}
 \subsection{基本结论}
 $\sum_{u \in V} d(u) = 2|E|$每多一条边，$\sum d(u)$多二
@@ -161,11 +165,11 @@ A connected graph $G$ is a tree $\iff$ all edges is a cut.
 
 Adding a edge to a tree creates exactly one cycle.
 
-Suppose $V=[n]$, then $2^{\binom{n}{2}}$ graphs exist, and $n^{n-2}$ of them are trees.
+Suppose $V=[n]$, then $2^{\binom{n}{2}}$ graphs exist, and $n^{n-2}$ of them are trees. This is because for every pair of vertices, there can be a edge or not have a edge, so $2^{\binom{n}{2}}$ graphs.
 
 Every connected graph $G$ has a subgraph $T$ such that $T$ is a tree.
 
-If $G$ is a tree, then every longest path in G is a $(u,v)$ path where both $u$ and $v$ are leafs. More about the ways to find the longest path in 3.3.
+If $G$ is a tree, then every longest path in G is a $(u,v)$ path where both $u$ and $v$ are leafs. More about the ways to find the longest path in \ref{sec:Algo_to_longest_path}.
 
 If $T$ is a tree with 3 or more vertices, then no leaf is a center.
 
@@ -195,7 +199,13 @@ Corollary from Hall's Theorem: Let $G$ be a $k$-regular bipartite graph. ($k$-re
 \subsection{Vertex Cover $\&$ Edge Cover}
 In every graph $G$, min $|VC| \geq$ max$|M|$
 
-K\"{o}nig's Theorem: In every bipartite graph $G$, min $|VC|=$ max $|M|$.
+K\"{o}nig's Theorem: In every bipartite graph $G$, min $|VC|=$ max $|Matching|$.
+
+$A$ is a Vertex Cover $\iff$ $V \setminus A$ is a Independent Set.
+
+In any graph with $|V|=n$, $\max{IS}+\min(VC)=n$
+
+$\max{Matching}+\min{Edge Cover}=n$ for any graph with no isolated vertex.
 
 Gallei's Theorem: In every graph $G$ without isolated vertices, max $|M|$+min$|EC|$=$n$
 \subsection{Network Flow}
@@ -203,7 +213,7 @@ Max Flow Min Cut Theorem: in a directed graph G, the max flow is the capacity of
 \subsection{Stable Matching}
 Stable Matching Theorem: In a XY-bipartite graph with sizeof(X)=sizeof(Y)=n, every $x_{i},y_{i}$ has a permutation of Y and X, there's always a stable perfect matching.
 \subsection{Graph Colouring}
-In every graph $G$, $\chi(G) \geq \omega(G)$
+In every graph $G$, $\chi(G) \geq \omega(G)$, i.e. the color needed to properly color $G$ is greater than the biggest clique.
 
 $chi(G)\geq \frac{n}{\alpha(G)}$. ($\alpha(G)$ is the size of the largest Independent Set.)
 
@@ -212,6 +222,8 @@ Let $G$ be a graph with maximum degree $\delta$, then $\chi(G) \leq 1+\delta$
 Brook's Theorem: the only graphs that need $\delta +1$ colours are odd cycles and complete graphs.\
 
 Suppose G is a graph with degree sequence $d_{1}\geq d_{2} \geq d_{3} \geq \dots \geq d_{n}$,then $\chi(G) \leq 1+max_{i}\{min\{d_{i},i-1\}\}$
+
+$\chi(G\Box H)=\max(\chi(G),\chi(H))$
 \section{Algorithms}
 \subsection{Maximum Spanning Tree}
 \subsubsection{Kruskal's algorithm}
@@ -232,19 +244,24 @@ if $l$ isn't a leaf, then $is_{0}[l] = \sum_{c_{i}}(max\{is_{0}[c_{i}], is_{1}[c
 
 output = $max\{is_{0}[r],is_{1}[r]\}$
 
-\subsection{Algorithm to find the longest path}
+\subsection{Algorithm to find the longest path} \label{sec:Algo_to_longest_path}
 $depth[v] = 1+max\{depth[c_{i},c_{i}$ is $v$'s children$\}$($v$ is not a leaf) or $depth[v] = 0$($v$ is a leaf)
 
 define $lp[v] = $length of the longest path whose highest depth is $v$.
 
 $lp[v] = max\{depth[v],2+max\{c_{i}\}+max\{c_{j}\}\}$($i \neq j$)
 
+\subsection{Path length calculation}
+Define $\alpha(u,v,k)$ as 1 if there is a walk with $k$ edges from $u$ to $v$, otherwise 0. then $d(u,v)$ is the smallest $k$ such that $\alpha(u,v,k)=1$.
+
+$\alpha(u,v,k) = \bigvee_{w\in N(v)} \alpha(u,w,k-1)$, $\alpha(u,u,0)=1, \alpha(u,v,0)=0$ for $u \neq v$
+
 \subsection{Dijkastra's Algorithm}
 (To find a minimum path from $u$ to $v$ in a non-negative weighted graph)——贪心算法和广度优先的结合
 
-1.从起始点开始计算所有和它相连的点(也就是起始点指向的点)，计算完之后把起始点标记下(表示已经计算过了)。
+1.从起始点$u$开始计算所有和它相连的点(也就是起始点指向的点)，计算完之后把起始点标记下(表示已经计算过了)。
 
-2.找出离起始点最近且没有被标记过的点v ，计算所有和v相连且没有被标记过的点，计算完之后把v标记下。
+2.找出离起始点最近且没有被标记过的点$v$，计算所有和$v$相连且没有被标记过的点，计算完之后把$v$标记下。即：For each neighbor $n$ of $v$, if($d(u,v)+w(v,n)>d(u,n)$), then update $d(u,w)=d(u,v)+w(v,n)$
 
 3.重复上面的步骤2.直到所有顶点都标记完为止。
 

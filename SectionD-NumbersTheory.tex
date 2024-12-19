@@ -28,7 +28,7 @@ Division: Let $a,b \in \mathbb{Z}, b>0$, there exist unique $q,r \in \mathbb{Z}$
 
 Greatest Common Divisor(最大公约数): $d|a \wedge d|b$ and $d$ is the greatest.
 
-Relatively prime(互质): $a\perp b \Leftrightarrow gcd(a,b) = 1$
+Relatively prime(互质): $a\perp b \Leftrightarrow gcd(a,b) = 1 \Leftrightarrow \exists x,y \in \mathbb{Z}, ax+by=1$
 
 Least Common Multiple(最小公倍数): $a|l \wedge b|l$ and $l$ is the smallest.
 
@@ -130,6 +130,15 @@ $\therefore$ the number $a$ has a mmi $mod\, n$ iff $gcd(a,n)=1$.
 A system of linear congruences: $x =_{n_i} a_i$ where every $n_i$ is relatively prime to each other, have a unique solution. $x-a_i = k_i n_i$, $a_i-a_j = k_in_i-k_jn_j = m_{i,j} \times gcd(n_i,n_j)$, $gcd(n_i,n_j)|a_i-a_j$. 
 
 The solution of $x$ is $x\equiv lcm(a_1,a_2,\dots,a_i) (mod\, n_1n_2\dots n_i)$
+
+Hyperlink: \href{https://youtu.be/EolotL9HN8k?list=PL22w63XsKjqyg3TEfDGsWoMQgWMUMjYhl}{vid}
+\subsection{Fermat's Little Theorem}
+To proof: $p \nmid a \Rightarrow a^{p-1}=_p 1$ ($p$ is prime)
+
+Let $A=\{a,2a,3a,\dots,(p-1)a\}$, because $p \nmid a$, so $A =_p \{1,2,3,\dots,p-1\}$
+
+Then by multiplying every element in $A$, we have $\prod_{i=1}^{p-1} i\times a =_p 1\times 2\times \dots \times (n-1)$, so $(p-1)!\times a^(p-1) =_p (p-1)!$. By $p\nmid (p-1)!$, we can divide $(p-1)!$ and get the proof to the original Theorem.
+
 
 \section{Encryption $\&$ Decryption}
 \subsection{Symmetric Encryption}

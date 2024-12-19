@@ -34,7 +34,7 @@ Probability Space: A probability space $(S,E,Prob)$ is a measure space with tota
 
 Conditional Probability: $P(A|B) = \frac{P(A\cap B}{P(B)}$. It's also denoted as $P_B(A)$
 
-Independent sets: $A$ and $B$ are independent sets if $P(A|B) = P(A)$. Then, they satisfy: $P(AB) = P(A)\times P(B)$
+Independent events: $A$ and $B$ are independent events if $P(A|B) = P(A)$. Then, they satisfy: $P(AB) = P(A)\times P(B)$
 
 Random Variable: A function $X: S \mapsto \mathbb{R}$. We say $X$ is a discrete random variable if $range(X)$ is either finite or countable
 
@@ -53,10 +53,14 @@ Markov Chain(Definition using graphs): In $C = (G,\pi,v_0)$ where $G = (V,E)$ is
 
 Extension: Let $w$ be a finite walk on $G$, then $Ext(w) = \{\overline{w} \in G| \overline{w}$ is an infinite walk with prefix $w\}$
 
-B\"uchi set: There's a target set $T\subseteq V$. $A_i = \{w|w$ is a finite walk on $G$ and exists $i$ $k$s such that all $w[k] \in T\}$. $B_i = Ext(A_i)$. $A_i$ are countable sets, so $B_i$ re countable union of events. $B\ddot{u}chi(T) = \cap_{i=1}^n B_i$ is an event.
+B\"uchi set: There's a target set $T\subseteq V$. $A_i = \{w|w$ is a finite walk on $G$ and exists $i$ $k$s such that all $w[k] \in T\}$. $B_i = Ext(A_i)$. $A_i$ are countable sets, so $B_i$ are countable union of events. $B\ddot{u}chi(T) = \cap_{i=1}^n B_i$ is an event.
 %需要继续整理这块
 
 精神状态不正常了：反正就是B\"uchi(v)会无限次的经过v，然后可将一个非Strongly Connected 的graph切分成一堆Strongly Connected Component。在每一个SCC中，一定会有Bottom SCC，即只有ingoing没有outgoing edge。P（最后end up in BSCC） = 1。
+
+精神正常后的补充：在一个SCC中，若有一个$v$会被无限次经过，即B\"uchi(v)成立，假设$v'$是$v$的一个successor，那么有限次经过$v'$的概率=$p^n(1-p)^{\infty}$，趋近于0，所以$P(Buchi[v']|Buchi[v])=1$. By conditional probability, $P(Buchi[v'])\geq P(Buchi[v])$. 又因为 $\forall v \in SCC, S=\cup Buchi[v], P(S)=1$，所以肯定有一个$P(Buchi[v])=1$，那么$\forall v \in SCC, P(Buchi[v])=1$。
+
+在一个G中有很多SCC，其中必包含BSCC，那么$P(Buchi[v])$在$v\in BSCC$ 时与上一题相同，而$P(Buchi[v])$在$v \notin BSCC$时=0，因为最后肯定会卡在一个BSCC里
 
 \subsection{Markov decision process}
 State space $S$, Action space $A$, State Transitional Probability Matrix $Prob(u,v)$, Reward $Reward(e)$, Discount factor $\gamma$, Policy $Policy(u)$. Refer to an example in Hw4: 

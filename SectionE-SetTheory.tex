@@ -114,7 +114,7 @@ Upper bound: An element $b \in U$ is an upper bound of $A$ if $\forall a \in A, 
 
 Supremum: If there $\exists s \in B$ such that $\forall a \in A, a \leqslant s, \forall s' \in B, s \leqslant s'$. Then $s$ is the supremum of $A$, $s = sup(A)$.
 
-Least Upper Bound Property: If $U$ is an ordered set, then $U$ has the LUB property if every non-empty sunset of $U$ \textbf{that has an upper bound}, also has a supremum.
+Least Upper Bound Property: If $U$ is an ordered set, then $U$ has the LUB property if every non-empty subset of $U$ \textbf{that has an upper bound}, also has a supremum.
 
 The definition of lower-bound, infimum, largest-lower-bound property is similar.
 
@@ -161,7 +161,9 @@ If $|X| \leqslant |Y|$ and $|Y| \leqslant |X|$ then $|X| = |Y|$.\\
 
 $0\leqslant x < 1$ is a terminating/ repeating/ mixed decimal expansion, $\iff$ $x$ is a rational number.
 
-If $U$ is an ordered set, then $U$ has the largest-lower-bound property if $U$ also satisfies the largest-lower-bound property.
+If $U$ is an ordered set, then $U$ has the largest-lower-bound property if $U$ also satisfies the least-upper-bound property. This is because for every subset $A$ that is bounded below, $A \neq \emptyset$, so $L = \{x \in U| \forall a \in A, a \geq x\}$. Because $A$ has a lower bound, so $L \neq \emptyset$. By $U$ has the largest-lower-bound property, there exists $\alpha = inf(A)$. It's easy to see that $\alpha$ is also the least-upper-bound of $L$. Therefore, every non-empty subset of $U$ has a least-upper-bound. Proved.
+
+$\mathbb{Q}$ does not have the supremum property, because in $A=\{x \in \mathbb{Q}| x^2<2\}$, $A$ have upper-bounds like 2,3,$\dots$, but the least upper bound does not exist, as $\sqrt{2} \notin \mathbb{Q}$
 
 $\mathbb{R}$ has the supremum property (Least-upper-bound property).
 
@@ -194,9 +196,17 @@ $\therefore |\mathbb{N}|\leqslant|\mathbb{Q}|$
 
 $\therefore |\mathbb{Q}| = |\mathbb{N}|$
 \subsection{$\mathbb{P}$ is countable}
-$f$ takes a finite sequence $a_1,a_2,\dots$, and maps it to $2^{a_1}\times3^{a_2}\times\dots\times p_i^{a_i} \times\dots$. Then, remove the 0s at the end of the sequence, set there are $i$ 0s removed. Let the set of all the finite sequences be $X$, and $\overline{X}$ is the set of all finite sequence with the end 0s removed. By the Arithmetic Fundamental Theorem, $f$ maps $\overline{X}$ to $\mathbb{N}$ and is one-to-one and onto. $g(X) = (i,f(\overline{X})$, $g:X \mapsto \mathbb{N}^2$ is one-to-one and onto. Therefore $\mathbb{P}$ is countable.
+$f$ takes a finite sequence $a_1,a_2,\dots$, and maps it to $2^{a_1}\times3^{a_2}\times\dots\times p_i^{a_i} \times\dots$. Then, remove the 0s at the end of the sequence, set there are $i$ 0s removed. Let the set of all the finite sequences be $X$, and $\overline{X}$ is the set of all finite sequence with the end 0s removed. By the Arithmetic Fundamental Theorem, $f$ maps $\overline{X}$ to $\mathbb{N}$ and is one-to-one and onto. $g(X) = (i,f(\overline{X}))$, $g:X \mapsto \mathbb{N}^2$ is one-to-one and onto. Therefore $\mathbb{P}$ is countable.
 
+\subsection{Cantor's Theorem}
+Let $g: A \rightarrow \mathbb{P}(A)$ be a bijection. There exists a set $T=\{x \in A| x \notin g(x)\}$, then $T$ is a element in $\mathbb{P}(A)$, i.e. $T \in \mathbb{P}(A)$. Because $g$ is a bijection, there exists $a\in A$ such that $g(a)=T$. For $a$, if $a \in g(a)$, then $a \notin T$, then there's a element in $T$ that is not in $T$, contradiction! If $a \notin g(a)$, then $a \in T$, then there's a element that is not in $T$ is in $T$, contradiction!
 
+\subsection{Tarski's Theorem}
+Let $X$ be a set and $h: \mathbb{P}(X) \rightarrow \mathbb{P}(X)$ be a function such that if $A \in B$ then $h(A) \in h(B)$. Define a set $A \in \mathbb{P}(X)$ is "expansive" if $A \subseteq h(A)$.
+
+Lemma: if $\Omega$ is a set of expansive sets, i.e. $\forall A \in Omega$, $A$ is expansive, then $\bigcup \Omega$ is expansive.
+
+Let $C = \bigcup\{A\in \mathbb{P}(X)| A \subseteq h(A)\}$ be all expansive sets. then by the lemma above, $C$ is also a expansive set, so $h(C)$ exists and $C \subseteq h(C)$. Because by the definition of $h$, $C \in h(C) \Rightarrow h(C) \in h(h(C))$, then $h(C)$ is a expansive set. So $h(C) \in C$, $h(C) = C$.
 \section{方法}
 \subsection{About sth. that is not countable}
 \subsubsection{Vitali Set}
