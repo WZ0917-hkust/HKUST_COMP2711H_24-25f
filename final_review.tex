@@ -9,15 +9,22 @@
 %\usepackage{china2e} 
 \usepackage[utf8]{inputenc}
 \usepackage{chemarrow}
+\usepackage[colorlinks,linkcolor=black]{hyperref}
+\usepackage{fancyhdr}
 
 \title{COMP2711H Review}
 \author{Based on Lectures from $A.K.Goharshady$. \\ Notes by $Zheng, Siyang$}
-\date{December 8, 2024}
+\date{December 20, 2024}
 
 \begin{document}
 \maketitle
 
+\hypertarget{toc}{}
 \tableofcontents
+
+
+\fancyfoot[R]{\hyperlink{toc}{back to contents}}
+\pagestyle{fancy}
 
 \chapter{Propositional logic逻辑学、数论基础}
 Proposotional Logic, Predicate Logic and Peano's Axioms, Induction, Well-ordering and Infinite Descent, Induction Problems and Strong Induction.
@@ -34,56 +41,78 @@ XOR: &"$\oplus$" $\rightarrow$ $a\oplus b$ means if $a == b$\\
 
 \end{tabular}
 
-$p \vee (q \wedge r) = (p \vee q) \wedge (p \vee r)$\\
-$\indent$ $p \wedge (q \vee r) = (p \wedge q) \vee (p \wedge r)$
+$p \vee (q \wedge r) = (p \vee q) \wedge (p \vee r)$
+
+$p \wedge (q \vee r) = (p \wedge q) \vee (p \wedge r)$
 
 \textbf{Quantifiers:}
 
-$\indent$Universal quantifier: $\forall$\\
-$\indent$ $\indent$Existential quantifier: $\exists$\\
+Universal quantifier: $\forall$
 
-$\neg \forall x, p(x) \iff \exists x, \neg p(x)$\\
-$\indent$ $\neg \exists x, p(x) \iff \forall x, \neg p(x)$\\
+$\indent$Existential quantifier: $\exists$\\
+
+$\neg \forall x, p(x) \iff \exists x, \neg p(x)$
+
+$\neg \exists x, p(x) \iff \forall x, \neg p(x)$\\
 
 $\forall n,m \in N, n \leq m \iff \exists x \in N, n+x = m$
 
 \subsection{Definitions of 专有名词}
-Tantology:恒成立\\
-$\indent$Predicate:猜想\\
-$\indent$Proposition:命题\\
-$\indent$Contradiction:矛盾
+Tantology:恒成立
+
+Predicate:猜想
+
+Proposition:命题
+
+Contradiction:矛盾
 
 \section{公理}
 Peano's Axioms:自然数公理 $\rightarrow$ 定义自然数
 \section{定理/结论}
-$\sqrt 2$ is irrarional. $\leftarrow$ proof by assumpution\\$\indent$
+$\sqrt 2$ is irrarional. $\leftarrow$ proof by assumpution.
+
 There is infinite amount of prime numbers. $\leftarrow$ proof by assuming finite amount of prime, then $k = \prod_{i=1}^{n}\, p_{i} + 1$, $k = a \times b, a \in \{p_{n}\}$, no infinite descending {$b_{n}$}.\\
 
-\noindent In Fibonnacci numbers, $F_{0} = 0; F_{1} = 1$\\$\indent$
-$\sum_{i = 1}^{n} F_{i} = F_{n+2}-1$\\$\indent$
-$\forall n \in N, F_{1}+F_{3}+F_{5}+\dots +F_{2n-1} = F_{2n}-1$\\$\indent$
-$\forall n \in N, F_{2}+F_{4}+F_{6}+\dots +F_{2n} = F_{2n+1}-1$\\$\indent$
+\noindent In Fibonnacci numbers, $F_{0} = 0; F_{1} = 1$
+
+$\sum_{i = 1}^{n} F_{i} = F_{n+2}-1$
+
+$\forall n \in N, F_{1}+F_{3}+F_{5}+\dots +F_{2n-1} = F_{2n}-1$
+
+$\forall n \in N, F_{2}+F_{4}+F_{6}+\dots +F_{2n} = F_{2n+1}-1$
+
 $F_{n}$ and $F_{n+1}$ are relatively prime.\\
 
 \noindent $\forall n \geq 1, \, 1^{3}+2^{3}+\dots + n^{3} = (1+2+ \dots +n)^{2}$
 \section{重要定理详解}
-\noindent Peano's axioms: \\$\indent$
-a) 0 is a natural number. \\$\indent$
-b) Every natural number has a successor $s(n)$. \\$\indent$
-c) For all $n,m \in N$, if $s(n) = s(m)$, then $n = m$. \\$\indent$
-d) For every natural number $n$, the successor of n is not 0. \\$\indent$
+\noindent Peano's axioms: 
+
+a) 0 is a natural number. 
+
+b) Every natural number has a successor $s(n)$. 
+
+c) For all $n,m \in N$, if $s(n) = s(m)$, then $n = m$. 
+
+d) For every natural number $n$, the successor of n is not 0. 
+
 e) If $K$ is a set such that $0 \in K, \forall n \in N, n \in K \Rightarrow s(n) \in K$, then $K = N$
 
-\noindent "+":\\$\indent$
-a) $\forall n \in N, n+0 = n$\\$\indent$
+\noindent "+":
+
+a) $\forall n \in N, n+0 = n$
+
 b) $\forall n,m \in N, n+s(m) = s(n+m)$
 
-\noindent "$\times$":\\$\indent$
-a) $\forall n, n\times 0 = 0$\\$\indent$
+\noindent "$\times$":
+
+a) $\forall n, n\times 0 = 0$
+
 b) $\forall n,m \in N, n \times s(m) = n \times m + n$
 \section{方法}
-\noindent Mathematical induction (数学归纳法): If you want to show $\varphi(n)$ holds for $n \in N$ \\$\indent$
-a) Base case: the induction basis holds.($\varphi(0)$ holds)\\$\indent$
+\noindent Mathematical induction (数学归纳法): If you want to show $\varphi(n)$ holds for $n \in N$ 
+
+a) Base case: the induction basis holds.($\varphi(0)$ holds)
+
 b) Induction step: when $\varphi(n)$ holds, then $\varphi(n+1)$ holds\\
 Strong Induction: proof $\forall n \in N$ , $p(0) \wedge p(1) \wedge \dots \wedge p(n)$ holds $\Rightarrow p(n+1)$.\\
 Well-ordering principle: every non-empty subset $A$ of $N$ has a smallest element.\\
@@ -94,175 +123,319 @@ Pigeon-Hole Principle: If we have n holes and n+1 pigeons are put in them, then 
 Counting, Permutations, Combinations, Balls and Walls, Principle of Inclusion and Exclusion, Generalized Principle of Inclusion and Exclusion, Pigeonhole Principle
 \section{定义}
 \subsection{Definition of 名词}
-Permutations: 排列. [n] = $\{1,2,\dots,n\}$\\$\indent$
-Onto:单射.\\$\indent$
+Permutations: 排列. [n] = $\{1,2,\dots,n\}$
+
+Onto:单射.
+
 \section{定理/结论}
 \subsection{几何意义}
-[n] has $2^{n}$ subsets\\$\indent$
-$\binom{n}{0} + \binom{n}{1} + \binom{n}{2} + \dots + \binom{n}{n} = 2^{n}$\\$\indent$
-$\sum_{i=0}^{n} (-1)^{n} \binom{n}{i} = 0$ $\Leftarrow$ even sized subsets=odd sized subsets\\$\indent$
-$n \binom{n-1}{k} = (k+1) \binom{n}{k+1}$ $\Leftarrow$ want to choose k+1 people from n people and designate a captain\\$\indent$
-$\star \binom{n}{r} = \binom{n-1}{r}+\binom{n-1}{r-1}$ $\Leftarrow$ number of subsets with an arbitrary element + without the element\\$\indent$
+[n] has $2^{n}$ subsets
+
+$\binom{n}{0} + \binom{n}{1} + \binom{n}{2} + \dots + \binom{n}{n} = 2^{n}$
+
+$\sum_{i=0}^{n} (-1)^{n} \binom{n}{i} = 0$ $\Leftarrow$ even sized subsets=odd sized subsets
+
+$n \binom{n-1}{k} = (k+1) \binom{n}{k+1}$ $\Leftarrow$ want to choose k+1 people from n people and designate a captain
+
+$\star \binom{n}{r} = \binom{n-1}{r}+\binom{n-1}{r-1}$ $\Leftarrow$ number of subsets with an arbitrary element + without the element
+
 $\sum_{0\leq j\leq i\leq n} \binom{n}{i}\binom{i}{j} = 3^{n}$ $\Leftarrow$ separate n into 3 parts\\$\indent$
 $\binom{n}{r} = \binom{n}{n-r}$
 \subsection{结论}
 for [n], how many permutations $\pi$ have the property $\forall i, \pi[i] \neq i$ : $d_{n} = (d_{n-1}+d_{n-2})(n-1)$
 \subsection{PIE}
-Principle of inclusion and exclusion(PIE): Find the whole number of elements in $A_{1} \sim A_{n}$. \\$\indent$
-Generalized PIE: Find the number of elements $E(m)$ appearing in exactly $m$ of $A_{1} \sim A_{n}$. \\$\indent$
+Principle of inclusion and exclusion(PIE): Find the whole number of elements in $A_{1} \sim A_{n}$. 
+
+Generalized PIE: Find the number of elements $E(m)$ appearing in exactly $m$ of $A_{1} \sim A_{n}$. 
+
 $\star$经典习题：6 persons, every pair is either friends or enemy.$\Rightarrow$There must exist 3 people who are friends to each other or enemies to each other.
 \section{重要定理详解}
-\noindent PIE:\\$\indent$
-Let $A_{1}, A_{2}, \dots , A_{n}$ be finite sets.\\$\indent$
-Suppose $x$ is in exactly $r$ of the $n$ sets.\\$\indent$
-This indicates that $x$ is counted in $\binom{r}{1} \, A_{n}$ s, $\binom{r}{2} \, A_{n_{1}}\cap A_{n_{2}}$ s,$\dots$, $\binom{r}{r} \, A_{n_{1}}\cap A_{n_{2}} \cap \dots \cap A_{n_{r}}$ s.\\$\indent$
-$\because$ $-\binom{r}{0}+\binom{r}{1}-\binom{r}{2}+\dots+(-1)^{r+1}\binom{r}{r} +\binom{r}{0}= $ number of subsets with odd sizes - number of subsets with even sizes+1 = 1 \\$\indent$
-$\therefore$Set $\omega(t) = \sum_{i_{1},i_{2},\dots,i_{t}}|A_{i_{1}} \cap A_{i_{2}} \cap \dots \cap A_{i_{t}}|$\\$\indent$
-$\therefore$ $|\cup_{i=1}^{k} A_{i}| = \sum_{t=1}^{k} (-1)^{t+1} \omega(t)$\\$\indent$
+\subsection{PIE}
+Let $A_{1}, A_{2}, \dots , A_{n}$ be finite sets.
+
+Suppose $x$ is in exactly $r$ of the $n$ sets.
+
+This indicates that $x$ is counted in $\binom{r}{1} \, A_{n}$ s, $\binom{r}{2} \, A_{n_{1}}\cap A_{n_{2}}$ s,$\dots$, $\binom{r}{r} \, A_{n_{1}}\cap A_{n_{2}} \cap \dots \cap A_{n_{r}}$ s.
+
+$\because$ $-\binom{r}{0}+\binom{r}{1}-\binom{r}{2}+\dots+(-1)^{r+1}\binom{r}{r} +\binom{r}{0}= $ number of subsets with odd sizes - number of subsets with even sizes+1 = 1
+
+$\therefore$Set $\omega(t) = \sum_{i_{1},i_{2},\dots,i_{t}}|A_{i_{1}} \cap A_{i_{2}} \cap \dots \cap A_{i_{t}}|$
+
+$\therefore$ \[|\cup_{i=1}^{k} A_{i}| = \sum_{t=1}^{k} (-1)^{t+1} \omega(t)\]
+
 重点在于找$A_{1},A_{2},\dots,A_{n}$!!!\\
 
-\noindent Generalized PIE:\\$\indent$
-in a universe with n elements, $A_{1}, A_{2}, \dots , A_{n}$ are finite sets\\$\indent$
-$\omega(t) = \sum_{i_{1},i_{2},\dots,i_{t}}|A_{i_{1}} \cap A_{i_{2}} \cap \dots \cap A_{i_{t}}|$\\$\indent$
-$E(m)$ = the number of elements appearing in exactly $m$ of $A_{1} \sim A_{n}$ = $\sum_{k=m}^{n} (-1)^{k-m} \binom{k}{m} \omega(k)$
-\section{方法}
-Principle of Addition (Case work principle)\\$\indent$
-Principle of Multiplication\\$\indent$
-算排列的时候别忘了去重\\$\indent$
-合理使用induction\\$\indent$
-插板法\\
+\begin{center}
+\includegraphics[scale=0.3]{PIE.png}
+\end{center}
 
-$\indent$题目较长的时候，要么用Pigeon-Hole Principle，要么用induction/strong induction
+\subsection{Generalized PIE}
+in a universe with n elements, $A_{1}, A_{2}, \dots , A_{n}$ are finite sets.
+
+$\omega(t) = \sum_{i_{1},i_{2},\dots,i_{t}}|A_{i_{1}} \cap A_{i_{2}} \cap \dots \cap A_{i_{t}}|$
+
+$E(m)$ = the number of elements appearing in exactly $m$ of $A_{1} \sim A_{n}$ = \[\sum_{k=m}^{n} (-1)^{k-m} \binom{k}{m} \omega(k)\]
+
+An example are as follows:  \href{https://www.youtube.com/watch?v=D1T3xy_vtxU}{vid}
+
+\begin{center}
+\includegraphics[scale=0.3]{PIE_Example.png}
+\end{center}
+
+\section{方法}
+Principle of Addition (Case work principle)
+
+Principle of Multiplication
+
+算排列的时候别忘了去重
+
+合理使用induction
+
+插板法
+
+$\indent\star$题目较长的时候，要么用Pigeon-Hole Principle，要么用induction/strong induction
+
+\section{例题}
+\subsection{插板法}
+How many solutions do we have if $x_1+x_2+x_3+x_4 = 10, x_i \in N$: We have 10 balls and 3 walls, we have $\binom{13}{3}$ solutions.
+
+\subsection{People sitting around circles}
+How many ways can $n$ people sit around $r$ circles: 
+
+Let $s(n,r)$ be the ways $n$ people can sit around $r$ circles. Then a person $n$ can sit in his own circle or share a circle with others, therefore $s(n,r) = s(n-1,r-1)+(n-1)s(n-1,r)$.
+
+$\Rightarrow$ if $r=1$, $s(n,1)=(n-1)!$.
+
+\subsection{PIE}
+\subsubsection{$n$ students and none of them sit in their chair}
+$d_0=1$, $d_1=0$, do induction, when adding a student, let that student sit in $i$'s position, $i$ can sit in $n$'s position, thus $d_{n-2}$, or $i$ can sit in other positions, thus $d_{n-1}$. Therefore, $d_n=d_{n-1}+d_{n-2}$
+
+Extension: How many permutations $\pi$ of $[n]$ have exactly $k$ fixed points? : First select $k$ elements from $n$ elements, then it's a permutation of $n-k$ elements which are not in their own places. Therefore, there's $d_{n,k}=\binom{n}{k} d_{n-k}$
+
+By PIE, let $S_i$ is the number of permutations that has $i$ fixed points, then the number of permutations where no $\pi[i]=i$ is \[d_n=n! - (\sum_{i=1}^n (-1)^{n+1}\binom{n}{i} S_i) = \dots = n! \sum_{i=1}^n \frac{(-1)^{i}}{i!}\]
+
+\subsubsection{How many functions from $[n]$ to $[m]$ are onto}
+Number of functions that do not cover the element $i$ in $[m]$ : $|A_i| = (m-1)^n$, then the number of functions that do not cover $k$ elements in $[m]$ are \[S_k = \binom{n}{k} |\cap_{i=a_1,a_2,\dots,a_k} A_i| = \binom{n}{k} (m-k)^n.\] The number of functions that are onto from $[n]$ to $[m]$ are \[O(n,m) = m^n-|\cup_{i=1}^m A_i| = m^n-(\sum_{i=1}^m (-1)^{i+1} S_i = m^n-(\sum_{i=1}^n (-1)^{i+1} \binom{n}{i}(m-i)^n\]
+
+\subsection{PigeonHole Principle}
+\subsubsection{choose 10 points from a 3x3 square, there must be two points whose distance < $\sqrt{2}$}
+there must be a square of 1x1 where two points are in it, these two points' distance $< \sqrt{2}$
+\subsubsection{$\exists x,y \in N, 2024|9^x-9^y$}
+$\iff$ $9^x \equiv 9^y$ (mod 2024), because there's only 2024 kinds of remainders when divided by 2024, so when chosen 2025 numbers, there must exist two numbers that has the same remainder.
+\subsubsection{There are 6 candidates for president. Every pair of candidates is either friends or enemies. Prove that there are either 3 candidates who are all friends or 3 candidates who are all enemies.}
+for a candidate, there's 5 pairs of relations with him, so there must be at least 3 pairs of same relations. Set $A$ is in the same relation with $B,C,D$, if $B,C,D$ are pairwise not in the same relation as $A$, then $B,C,D$ are of the same relation, proofing the assumption. Otherwise, $A$ and the two of them are in the same relation, proofing the assumption.
 
 \chapter{Graph Theory图论}
 Graphs, Trees, Paths and Walks, Minimum Spanning Trees, Directed Graphs, DAGs, Tree-based Algorithms and Huffman Coding, Distance, Shortest Paths, Matchings, Vertex Covers, Edge Covers and Independent Sets, Network Flow and the Ford-Fulkerson Algorithm, Stable Matchings and Graph Coloring
 \section{定义}
 Graph $G = (V,E)$
 \subsection{基本名词}
-\;Loop:自环\\$\indent$
-Neighbors:用一条边连接起来的两点\\$\indent$
-Complement:补集,$G=(V,E),\,\overline{G}=(V,\overline{E})$\\$\indent$
-Complete Graph:全集,$K_{n} = (V,E)$, where $\forall u,v \in V, (u,v)\in E$\\$\indent$
-Degree of a vertex:"度",$d(v)$=number of neighbours of v\\$\indent$
+Loop:自环
+
+Neighbors:用一条边连接起来的两点
+
+Complement:补集,$G=(V,E),\,\overline{G}=(V,\overline{E})$
+
+Complete Graph:全集,$K_{n} = (V,E)$, where $\forall u,v \in V, (u,v)\in E$
+
+Degree of a vertex:"度",$d(v)$=number of neighbours of v
+
 Adjacency Matrix:"伴随矩阵", an $n\times n$ matrix where $A_{(i,j)} = 1$ if there's an edge $(i,j)$\\
 
-Walk: a sequence of vertices and edges, vertices and edges can repeat.\\$\indent$
-Trail: a walk that does not have repeated edges.\\$\indent$
-Path: a walk that does not have repeated vertices.\\$\indent$
-Closed walk: a walk that satisfies $v_{0} = v_{n}$.\\$\indent$
+Walk: a sequence of vertices and edges, vertices and edges can repeat.
+
+Trail: a walk that does not have repeated edges.
+
+Path: a walk that does not have repeated vertices.
+
+Closed walk: a walk that satisfies $v_{0} = v_{n}$.
+
 Cycle: = closed path\\
 
-Connected: Two vertices is connected if they are connected by a path.\\$\indent$
+Connected: Two vertices is connected if they are connected by a path.
+
 Connected Component (CC): a \textbf{maximal} connected subset of vertices.\\
 
 Weights: A functions that maps each edge to a Real number.\\
 
-Distance: $d(u,v) = $number of edges in a $(u,v)$ path.\\$\indent$
-Eccentricity: $ecc(u) = max\{d(u,v)\},v \in V$\\$\indent$
-Center: a vertex $u$ is a center of a graph $\iff$ for $\forall v \in V, ecc(u) \leq ecc(v)$\\$\indent$
-Radius: if $u$ is a center, radius = $ecc(u)$\\$\indent$
+Distance: $d(u,v) = $number of edges in a $(u,v)$ path.
+
+Eccentricity: $ecc(u) = max\{d(u,v)\},v \in V$
+
+Center: a vertex $u$ is a center of a graph $\iff$ for $\forall v \in V, ecc(u) \leq ecc(v)$
+
+Radius: if $u$ is a center, radius = $ecc(u)$
+
 Diameter: $diam(G) = max\{d(u,v)\},\forall u,v \in V$
 \subsection{Tree}
-Tree: a connected graph with n-1 edges\\$\indent$
-Cut: an edge $e \in E$ is a cut $\iff$ $e$ is not part of any cycle. $e$ is a cut if removing it makes the CC it is in into two CC. \\$\indent$
-Leaf: a vertex of degree 1.\\$\indent$
+Tree: a connected graph with n-1 edges
+
+Cut: an edge $e \in E$ is a cut $\iff$ $e$ is not part of any cycle. $e$ is a cut if removing it makes the CC it is in into two CC. 
+
+Leaf: a vertex of degree 1.
+
 Spanning Tree:"生成树", A tree that contains every vertex in $G$
-Minimum Spanning Tree(MST):"最小生成树", a spanning tree with the least weight.\\$\indent$
+
+Minimum Spanning Tree(MST):"最小生成树", a spanning tree with the least weight.
+
 Rooted Tree: a tree with one vertex chosen as the root. Root at the top and leafs at the bottom.
 \subsection{Bipartite}
-Bipartite graph: A graph $G=(V,E)$ is bipartite if $V = V_{1}\sqcup V_{2}$ such that $\forall e \in E$, e has one endpoint in $V_{1}$ and the other endpoint in $V_{2}$
+Bipartite graph: A graph $G=(V,E)$ is bipartite if $V = V_{1}\cup V_{2}$ such that $\forall e \in E$, e has one endpoint in $V_{1}$ and the other endpoint in $V_{2}$
 \subsection{Special cycles}
-Eulerian circuit: a closed walk that passes over every edge exactly once\\$\indent$
+Eulerian circuit: a closed walk that passes over every edge exactly once
+
 Hamiltonian Cycle: a cycle that visits all vertices
 \subsection{Graphic}
 Graphic: A sequence is graphic if it's the degree of a simple graph.
 \subsection{Directed Graph}
-Directed Graph: Every $e \in E$ is a $(u,v)$ ordered pair, every vertex has a in-degree and a out-degree.\\$\indent$
-Strongly Connected(SC): In a directed graph, $u$ and $v$ are strongly connected $\iff$ there's a $(u,v)$-path and a $(v,u)$-path.\\$\indent$
-Strongly Connected Component(SCC): a \textbf{maximal} connected subset of vertices such that every two vertices is strongly connected.\\$\indent$
-Directed Acyclic Graphs(DAGs):"有向无环图"\\$\indent$
+Directed Graph: Every $e \in E$ is a $(u,v)$ ordered pair, every vertex has a in-degree and a out-degree.
+
+Strongly Connected(SC): In a directed graph, $u$ and $v$ are strongly connected $\iff$ there's a $(u,v)$-path and a $(v,u)$-path.
+
+Strongly Connected Component(SCC): a \textbf{maximal} connected subset of vertices such that every two vertices is strongly connected.
+
+Directed Acyclic Graphs(DAGs):"有向无环图"
+
 Topological Ordering: In a DAG, a permutation $\pi$ of vertices such that every edge $e\in E$ is of the form $(\pi(i),\pi(j))$,where $i\leq j$. In a topological Ordering, every vertex appear and only appear once, if there's a path $(u,v)$, then, $u$ is in front of $v$
 \subsection{Independent Set}
-Independent Set: A set $I\subseteq V$, such that for every $e \in E$, $e\notin I$\\$\indent$
+Independent Set: A set $I\subseteq V$, such that for every $e \in E$, $e\notin I$
+
 Maximum Independent Set: The largest possible size of a independent set.
 \subsection{Matching}
-Matching: A matching $M\subseteq E$ such that no two edges in $M$ share an endpoint.\\$\indent$
-Maximal Matching: 在维持现状的基础上无法通过再加一条边来增加Matching的数量\\$\indent$
-Maximum Matching: $\forall M', |M'|<|M|$\\$\indent$
-Augmenting Path: an alternating path that alternates between $M$ and $E\setminus M$\\$\indent$
-Number of neighbours: $N(S)$ is the whole number of neighbours of every element in $S$.\\$\indent$
+Matching: A matching $M\subseteq E$ such that no two edges in $M$ share an endpoint.
+
+Maximal Matching: 在维持现状的基础上无法通过再加一条边来增加Matching的数量
+
+Maximum Matching: $\forall M', |M'|<|M|$
+
+Augmenting Path: an alternating path that alternates between $M$ and $E\setminus M$
+
+Number of neighbours: $N(S)$ is the whole number of neighbours of every element in $S$.
+
 Saturate: a Matching $M$ saturates $X$ $\iff$ every vertex $v \in X, v \in M$
 \subsection{Vertex Cover $\&$ Edge Cover}
-Vertex Cover: a set of vertices such that every edge has at least one endpoint in A.\\$\indent$
-Minimum Vertex Cover: $\forall VC', |VC'|<|VC|$\\$\indent$
+Vertex Cover: a set of vertices such that every edge has at least one endpoint in A.
+
+Minimum Vertex Cover: $\forall VC', |VC'|<|VC|$
+
 Edge Cover: a subset $L\subseteq E$ such that every vertex is incident to at least 1 edge in $L$. ($d(v)\neq 0,v \in V$)
-\\subsection{Network Flow}
-Network: a directed graph $G=(V,E)$, $C:V\times V \rightarrow N$(function Capacity maps every pair of vertices to a Natural number), there's a source($s$) and a sink($t$).\\$\indent$
+\subsection{Network Flow}
+Network: a directed graph $G=(V,E)$, $C:V\times V \rightarrow N$(function Capacity maps every pair of vertices to a Natural number), there's a source($s$) and a sink($t$).
+
 Flow: in a network, $f(u,v)$ is the flow from $u$ directly to $v$. \\
-Flow satisfies: \\$\indent$
-1.$\forall u,v \in V, f(u,v)\leq C(u,v)$. \\$\indent$
-2.$\forall u,v \in V, f(u,v) = -f(v,u)$. \\$\indent$
-3.inflow = outflow, $\forall u \in V\setminus \{s,t\} \sum_{v} f(u,v) = \sum_{v} f(v,u) = 0$\\$\indent$
-$|f| = \sum_{v} f(s,v) = \sum_{v} f(v,t)$\\$\indent$
+Flow satisfies: 
+
+1.$\forall u,v \in V, f(u,v)\leq C(u,v)$. 
+
+2.$\forall u,v \in V, f(u,v) = -f(v,u)$. 
+
+3.inflow = outflow, $\forall u \in V\setminus \{s,t\} \sum_{v} f(u,v) = \sum_{v} f(v,u) = 0$
+
+$|f| = \sum_{v} f(s,v) = \sum_{v} f(v,t)$
+
 Residual Graph: the graph obtained by subtracting the current flow from the capacity of each edge.
 \subsection{Graph Colouring}
-Graph Colouring: $k$ colors, a proper colouring is a function $C: V\rightarrow \{1,2,\dots,k\}$, such that for $\forall e \in E$, the two endpoints of $e$ has two different colours.\\$\indent$
-Chromatic number: $\chi(G)$ is the least number of colours needed to properly colour $G$\\$\indent$
-$\divideontimes$a bipartite is a graph with $\chi(G)=2$\\$\indent$
-Clique: $C\subseteq V$ is a clique if $\forall u,v \in C$,$\{u,v\}$ edge $\in E$,$\omega(G)$= size of the largest clique.即在clique中所有点全连着.\\$\indent$
+Graph Colouring: $k$ colors, a proper colouring is a function $C: V\rightarrow \{1,2,\dots,k\}$, such that for $\forall e \in E$, the two endpoints of $e$ has two different colours.
+
+Chromatic number: $\chi(G)$ is the least number of colours needed to properly colour $G$
+
+$\divideontimes$a bipartite is a graph with $\chi(G)=2$
+
+Clique: $C\subseteq V$ is a clique if $\forall u,v \in C$,$(u,v)$ edge $\in E$,$\omega(G)$= size of the largest clique.即在clique中所有点全连着.
+
 Box Product: Let $G$, $H$ be graphs, $G\Box H =(V_{G} \times V_{H},E_{G \Box H})$
+
+\begin{center}
+\includegraphics[scale=0.3]{Box_Product.png}
+\end{center}
 \section{定理/结论}
 \subsection{基本结论}
-$\sum_{u \in V} d(u) = 2|E|$每多一条边，$\sum d(u)$多二\\$\indent$
-Every $(u,v)$ walk contains a $(u,v)$ path.\\$\indent$
-A graph with $n$ vertices and $m$ edges has at least $n-m$ CC\\
-$\indent\Rightarrow$ to connect $n$ vertices, $m \geq n-1$\\$\indent$
-For $\forall v \in V$, if $d(v)\leq 2$, then $G$ is a cycle or a path.\\$\indent$
-Every connected graph with $n \geq 2$vertices has $\geq 2$ non-cut vertices.\\$\indent$
-Every odd closed walk contains an odd cycle\\$\indent$
-if $d(i) \geq 2, \forall i \in V$ $\Rightarrow$ G has a cycle\\$\indent$
-if $d(i) \leq 2, \forall i \in V$ $\Rightarrow$ G is a cycle or a path
+$\sum_{u \in V} d(u) = 2|E|$每多一条边，$\sum d(u)$多二
+
+Every $(u,v)$ walk contains a $(u,v)$ path.
+
+A graph with $n$ vertices and $m$ edges has at least $n-m$ CC
+
+$\Rightarrow$ to connect $n$ vertices, $m \geq n-1$
+
+For $\forall v \in V$, if $d(v)\leq 2$, then $G$ is a cycle or a path.
+
+Every connected graph with $n \geq 2$vertices has $\geq 2$ non-cut vertices.
+
+Every odd closed walk contains an odd cycle.
+
+if $d(i) \geq 2, \forall i \in V$ $\Rightarrow$ G has a cycle.
+
+if $d(i) \leq 2, \forall i \in V$ $\Rightarrow$ G is a cycle or a path.
 \subsection{Tree}
 Tree's definition: Let $G=(V,E)$, $|V|=n$, $|E|=m$, then \\
-"$G$ is connected and $m=n-1$"$\iff$"$G$ is connected and has no cycles"$\iff$ "$m = n-1$, $G$ has no cycles."\\$\indent$
-$G$ is a tree $\iff$ there is a unique path between every pair of vertices.\\$\indent$
-A connected graph $G$ is a tree $\iff$ all edges is a cut.\\$\indent$
-Adding a edge to a tree creates exactly one cycle.\\$\indent$
-Suppose $V=[n]$, then $2^{\binom{n}{2}}$ graphs exist, and $n^{n-2}$ of them are trees.\\$\indent$
-Every connected graph $G$ has a subgraph $T$ such that $T$ is a tree.\\$\indent$
-If $G$ is a tree, then every longest path in G is a $(u,v)$ path where both $u$ and $v$ are leafs. More about the ways to find the longest path in 3.3.\\$\indent$
-If $T$ is a tree with 3 or more vertices, then no leaf is a center.\\$\indent$
-Let $T$ be a tree, then $T$ either has 1 center $c$, or 2 neighbouring centers $c_{1},c_{2}$
+"$G$ is connected and $m=n-1$"$\iff$"$G$ is connected and has no cycles"$\iff$ "$m = n-1$, $G$ has no cycles."
+
+$G$ is a tree $\iff$ there is a unique path between every pair of vertices.
+
+A connected graph $G$ is a tree $\iff$ all edges is a cut.
+
+Adding a edge to a tree creates exactly one cycle.
+
+Suppose $V=[n]$, then $2^{\binom{n}{2}}$ graphs exist, and $n^{n-2}$ of them are trees. This is because for every pair of vertices, there can be a edge or not have a edge, so $2^{\binom{n}{2}}$ graphs.
+
+Every connected graph $G$ has a subgraph $T$ such that $T$ is a tree.
+
+If $G$ is a tree, then every longest path in G is a $(u,v)$ path where both $u$ and $v$ are leafs. More about the ways to find the longest path in \ref{sec:Algo_to_longest_path}.
+
+If $T$ is a tree with 3 or more vertices, then no leaf is a center.
+
+Let $T$ be a tree, then $T$ either has 1 center $c$, or 2 neighbouring centers $c_{1},c_{2}$.
 \subsection{Bipartite}
 A graph is bipartite $\iff$ it has no odd cycle
 \subsection{Special Cycles}
 $G$ is Eulerian $\iff$ $d(i)$ is even for $\forall i \in V$
 \subsection{Graphic}
-$d_{1} \sim d_{n}$is graphic $\iff$ $d_{1}-1 \sim d_{n}-1$ is graphic\\$\indent$
+$d_{1} \sim d_{n}$is graphic $\iff$ $d_{1}-1 \sim d_{n}-1$ is graphic.
+
 $\because$ Every different graphic sequence corresponds to a different tree. $\therefore$ There can be $n^{n-2}$ different trees with $n$ different vertices.
 \subsection{Directed Graph}
-Let $G$ be a loopless directed graph, $G$ is a DAG $\iff$ $G$ is a SCC.\\$\indent$
-$G$ is a DAG $\iff$ $G$ has a topological ordering ($G$ has no loops)\\$\indent$
+Let $G$ be a loopless directed graph, $G$ is a DAG $\iff$ $G$ is a SCC.
+
+$G$ is a DAG $\iff$ $G$ has a topological ordering ($G$ has no loops).
+
 In a directed $G$, if the out-degree/in-degree of every vertex is at least 1, then there's a cycle.
 \subsection{Matching}
-Berge Theorem: A matching $M$ is maximum $\iff$ it does not have an augmenting path.\\$\indent$
-When $M$ has an augmenting path, then $|M'| = |M|+1$ must exist.\\$\indent$
-Hall's Theorem: in a XY-bipartite graph, there's a matching $M$ saturating $X$ if and only if for$\forall S \subseteq X, |N(S)|\geq |X|$\\$\indent$
+Berge Theorem: A matching $M$ is maximum $\iff$ it does not have an augmenting path.
+
+When $M$ has an augmenting path, then $|M'| = |M|+1$ must exist.
+
+Hall's Theorem: in a XY-bipartite graph, there's a matching $M$ saturating $X$ if and only if for$\forall S \subseteq X, |N(S)|\geq |X|$. More proof in \hyperlink{Hall_proof}{\ref{Hall_proof}}. \label{Hall_theorem}\hypertarget{Hall_theorem}{}
+
 Corollary from Hall's Theorem: Let $G$ be a $k$-regular bipartite graph. ($k$-regular means $d(v) = k,v\in V$)($k\geq 1$).$G$ has a perfect matching.
 \subsection{Vertex Cover $\&$ Edge Cover}
-In every graph $G$, min $|VC| \geq$ max$|M|$\\$\indent$
-K\"{o}nig's Theorem: In every bipartite graph $G$, min $|VC|=$ max $|M|$.\\$\indent$
+In every graph $G$, min $|VC| \geq$ max$|M|$
+
+K\"{o}nig's Theorem: In every bipartite graph $G$, min $|VC|=$ max $|Matching|$.
+
+$A$ is a Vertex Cover $\iff$ $V \setminus A$ is a Independent Set.
+
+In any graph with $|V|=n$, $\max{IS}+\min(VC)=n$
+
+$\max{Matching}+\min{Edge Cover}=n$ for any graph with no isolated vertex.
+
 Gallei's Theorem: In every graph $G$ without isolated vertices, max $|M|$+min$|EC|$=$n$
 \subsection{Network Flow}
 Max Flow Min Cut Theorem: in a directed graph G, the max flow is the capacity of all the cuts.
 \subsection{Stable Matching}
 Stable Matching Theorem: In a XY-bipartite graph with sizeof(X)=sizeof(Y)=n, every $x_{i},y_{i}$ has a permutation of Y and X, there's always a stable perfect matching.
 \subsection{Graph Colouring}
-In every graph $G$, $\chi(G) \geq \omega(G)$\\$\indent$
-$chi(G)\geq \frac{n}{\alpha(G)}$. ($\alpha(G)$ is the size of the largest Independent Set.)\\$\indent$
-Let $G$ be a graph with maximum degree $\delta$, then $\chi(G) \leq 1+\delta$\\$\indent$
-Brook's Theorem: the only graphs that need $\delta +1$ colours are odd cycles and complete graphs.\\$\indent$
+In every graph $G$, $\chi(G) \geq \omega(G)$, i.e. the color needed to properly color $G$ is greater than the biggest clique.
+
+$chi(G)\geq \frac{n}{\alpha(G)}$. ($\alpha(G)$ is the size of the largest Independent Set.)
+
+Let $G$ be a graph with maximum degree $\delta$, then $\chi(G) \leq 1+\delta$
+
+Brook's Theorem: the only graphs that need $\delta +1$ colours are odd cycles and complete graphs.\
+
 Suppose G is a graph with degree sequence $d_{1}\geq d_{2} \geq d_{3} \geq \dots \geq d_{n}$,then $\chi(G) \leq 1+max_{i}\{min\{d_{i},i-1\}\}$
+
+$\chi(G\Box H)=\max(\chi(G),\chi(H))$
 \section{Algorithms}
 \subsection{Maximum Spanning Tree}
 \subsubsection{Kruskal's algorithm}
@@ -271,40 +444,63 @@ sort edges by increasing weight, if choosing the smallest-weight edge that is no
 start from any vertex $u$, take the smallest-weight edge from $u \in MST$ to a new vertex not inside MST.
 
 \subsection{Finding the Maximum Independent Set for $G$ is a tree}
-pick any arbitrary $v$ as root, let $T_{v}$ be a subtree of $T$ rooted at $v$.\\$\indent$
-$is_{0}[v] = $the size of the largest IS such that $v \notin I$\\$\indent$
-$is_{1}[v] = $the size of the largest IS such that $v \in I$\\$\indent$
-if $l$ is a leaf, then $is_{0}[l] = 0;is_{1}[l] = 1$,\\$\indent$
-if $l$ isn't a leaf, then $is_{0}[l] = \sum_{c_{i}}(max\{is_{0}[c_{i}], is_{1}[c_{i}]\});\; is_{1}[l] = \sum_{c_{i}}(is_{0}[c_{i}])+1$\\$\indent$
+pick any arbitrary $v$ as root, let $T_{v}$ be a subtree of $T$ rooted at $v$.
+
+$is_{0}[v] = $the size of the largest IS such that $v \notin I$
+
+$is_{1}[v] = $the size of the largest IS such that $v \in I$
+
+if $l$ is a leaf, then $is_{0}[l] = 0;is_{1}[l] = 1$,
+
+if $l$ isn't a leaf, then $is_{0}[l] = \sum_{c_{i}}(max\{is_{0}[c_{i}], is_{1}[c_{i}]\});\; is_{1}[l] = \sum_{c_{i}}(is_{0}[c_{i}])+1$
+
 output = $max\{is_{0}[r],is_{1}[r]\}$
 
-\subsection{Algorithm to find the longest path}
-$depth[v] = 1+max\{depth[c_{i},c_{i}$ is $v$'s children$\}$($v$ is not a leaf) or $depth[v] = 0$($v$ is a leaf)\\$\indent$
-define $lp[v] = $length of the longest path whose highest depth is $v$.\\$\indent$
+\subsection{Algorithm to find the longest path} \label{sec:Algo_to_longest_path}
+$depth[v] = 1+max\{depth[c_{i},c_{i}$ is $v$'s children$\}$($v$ is not a leaf) or $depth[v] = 0$($v$ is a leaf)
+
+define $lp[v] = $length of the longest path whose highest depth is $v$.
+
 $lp[v] = max\{depth[v],2+max\{c_{i}\}+max\{c_{j}\}\}$($i \neq j$)
 
+\subsection{Path length calculation}
+Define $\alpha(u,v,k)$ as 1 if there is a walk with $k$ edges from $u$ to $v$, otherwise 0. then $d(u,v)$ is the smallest $k$ such that $\alpha(u,v,k)=1$.
+
+$\alpha(u,v,k) = \bigvee_{w\in N(v)} \alpha(u,w,k-1)$, $\alpha(u,u,0)=1, \alpha(u,v,0)=0$ for $u \neq v$
+
 \subsection{Dijkastra's Algorithm}
-(To find a minimum path from $u$ to $v$ in a non-negative weighted graph)——贪心算法和广度优先的结合\\$\indent$
-1.从起始点开始计算所有和它相连的点(也就是起始点指向的点)，计算完之后把起始点标记下(表示已经计算过了)。\\$\indent$
-2.找出离起始点最近且没有被标记过的点v ，计算所有和v相连且没有被标记过的点，计算完之后把v标记下。\\$\indent$
-3.重复上面的步骤2.直到所有顶点都标记完为止。\\
+(To find a minimum path from $u$ to $v$ in a non-negative weighted graph)——贪心算法和广度优先的结合
+
+1.从起始点$u$开始计算所有和它相连的点(也就是起始点指向的点)，计算完之后把起始点标记下(表示已经计算过了)。
+
+2.找出离起始点最近且没有被标记过的点$v$，计算所有和$v$相连且没有被标记过的点，计算完之后把$v$标记下。即：For each neighbor $n$ of $v$, if($d(u,v)+w(v,n)>d(u,n)$), then update $d(u,w)=d(u,v)+w(v,n)$
+
+3.重复上面的步骤2.直到所有顶点都标记完为止。
 
 \subsection{Ford-Fulkerson's algorithm}
 First initialize all $f$ to 0, then find any path from $s$ to $t$ such that every edge in the path is either non-full forward or non-empty backwards. Add to each edge of the path until there's a edge that's empty or full. Repeat.\\
 
 \noindent Greedy Colouring: pick any order for colouring, when colouring vertex $i$, assign the smallest colour number $j$ that's not in its neighbours.
 \section{重要定理证明}
-\noindent Hall's Theorem:\\$\indent$
-"$\Rightarrow$": $\because$ It's a matching, $\therefore$ there must be at least one vertex in $Y$ that is a neighbour of a vertex in $X$, $|N(S)|\geq |S|$\\$\indent$
-"$\Leftarrow$": 取逆否命题，即原命题的反命题:To proof="if maximum matching $M$ does not saturate $X$, then $|N(S)|<|S|$"\\$\indent$
-$\exists x_{0}\in X, x_{0}\notin M.$ Set $x_{1} \sim x_{n} \in X\cap M = \overline{X}, y_{1} \sim y_{n} \in Y\cap M = \overline{Y}$\\$\indent$
-a) Proof $x_{0}$'s neighbour is in $\overline{Y}$: if $x_{0}$'s neighbour $\in Y\setminus\overline{Y}$, then count that edge into $M$, contradicting to $x_{0} \notin M$.\\$\indent$
-b) Proof $\forall x \in \overline{X}, \nexists v\in Y\setminus\overline{Y}$ such that $(x,v)$ is a edge: if so, then $x_{0}, y_{i_{1}}, x_{i_{1}}, y_{i_{2}}, x_{i_{2}}, \dots, y_{i_{n}}, x, v$ is a augmenting path, contradicting to $M$ is a maximum matching.\\$\indent$
+\noindent Hall's Theorem:
+
+Theorem in \hyperlink{Hall_theorem}{\ref{Hall_theorem}}. \label{Hall_proof}\hypertarget{Hall_proof}{}.
+
+"$\Rightarrow$": $\because$ It's a matching, $\therefore$ there must be at least one vertex in $Y$ that is a neighbour of a vertex in $X$, $|N(S)|\geq |S|$
+
+"$\Leftarrow$": 取逆否命题，即原命题的反命题:To proof="if maximum matching $M$ does not saturate $X$, then $|N(S)|<|S|$"
+
+$\exists x_{0}\in X, x_{0}\notin M.$ Set $x_{1} \sim x_{n} \in X\cap M = \overline{X}, y_{1} \sim y_{n} \in Y\cap M = \overline{Y}$
+
+a) Proof $x_{0}$'s neighbour is in $\overline{Y}$: if $x_{0}$'s neighbour $\in Y\setminus\overline{Y}$, then count that edge into $M$, contradicting to $x_{0} \notin M$.
+
+b) Proof $\forall x \in \overline{X}, \nexists v\in Y\setminus\overline{Y}$ such that $(x,v)$ is a edge: if so, then $x_{0}, y_{i_{1}}, x_{i_{1}}, y_{i_{2}}, x_{i_{2}}, \dots, y_{i_{n}}, x, v$ is a augmenting path, contradicting to $M$ is a maximum matching.
+
 $\Rightarrow$ $|N(S)| = |\overline{Y}| = |S|-1 < |S|$得证.
 \section{方法}
-In a game consisting of two players, consider assigning a label to every state of the game.\\$\indent$
-To proof something exists, construct a algorithm that has a termination proof and a correctness proof.
+In a game consisting of two players, consider assigning a label to every state of the game.
 
+To proof something exists, construct a algorithm that has a termination proof and a correctness proof.
 
 \chapter{Numbers Theory数论}
 Divisibility and Greatest Common Divisor, Prime Factorizations and the Fundamental Theorem of Arithmetic, Congruence, Modular Multiplicative Inverse and the Chinese Remainder Theorem, Fermat's Little Theorem, Euler's Theorem, Wilson's theorem, Diffie-Hellman-Merkle Key Exchange and El-Gamal Encryption, RSA Encryption and Digital Signatures
@@ -320,7 +516,7 @@ Division: Let $a,b \in \mathbb{Z}, b>0$, there exist unique $q,r \in \mathbb{Z}$
 
 Greatest Common Divisor(最大公约数): $d|a \wedge d|b$ and $d$ is the greatest.
 
-Relatively prime(互质): $a\perp b \Leftrightarrow gcd(a,b) = 1$
+Relatively prime(互质): $a\perp b \Leftrightarrow gcd(a,b) = 1 \Leftrightarrow \exists x,y \in \mathbb{Z}, ax+by=1$
 
 Least Common Multiple(最小公倍数): $a|l \wedge b|l$ and $l$ is the smallest.
 
@@ -423,6 +619,15 @@ A system of linear congruences: $x =_{n_i} a_i$ where every $n_i$ is relatively 
 
 The solution of $x$ is $x\equiv lcm(a_1,a_2,\dots,a_i) (mod\, n_1n_2\dots n_i)$
 
+Hyperlink: \href{https://youtu.be/EolotL9HN8k?list=PL22w63XsKjqyg3TEfDGsWoMQgWMUMjYhl}{vid}
+\subsection{Fermat's Little Theorem}
+To proof: $p \nmid a \Rightarrow a^{p-1}=_p 1$ ($p$ is prime)
+
+Let $A=\{a,2a,3a,\dots,(p-1)a\}$, because $p \nmid a$, so $A =_p \{1,2,3,\dots,p-1\}$
+
+Then by multiplying every element in $A$, we have $\prod_{i=1}^{p-1} i\times a =_p 1\times 2\times \dots \times (n-1)$, so $(p-1)!\times a^(p-1) =_p (p-1)!$. By $p\nmid (p-1)!$, we can divide $(p-1)!$ and get the proof to the original Theorem.
+
+
 \section{Encryption $\&$ Decryption}
 \subsection{Symmetric Encryption}
 $\overline{m} = Enc(m,key)$ and $m = Dec(\overline{m},key)$
@@ -517,10 +722,13 @@ Infinite Sets: A set $X$ is infinite if $X$ is not finite.
 
 Cardinality(set的大小): Let $X$ and $Y$ be two sets, then $|X| = |Y|$ or $X\sim Y$ iff there is a bijection $f:X \leftrightarrow Y$. 
 
-Property of Cardinality: \\$\indent$
-$\forall X, X \sim X$\\$\indent$
-$\forall X,Y,Z, X\sim Y \wedge Y\sim Z \Rightarrow X \sim Z$\\$\indent$
-$\forall X,Y, X\sim Y \Leftrightarrow Y \sim X$
+Property of Cardinality: 
+
+$\;\forall X, X \sim X$
+
+$\;\forall X,Y,Z, X\sim Y \wedge Y\sim Z \Rightarrow X \sim Z$
+
+$\;\forall X,Y, X\sim Y \Leftrightarrow Y \sim X$
 
 $|X|\leqslant|Y|$ if there exists a one to one function that maps $X$ to $Y$
 
@@ -536,7 +744,7 @@ Upper bound: An element $b \in U$ is an upper bound of $A$ if $\forall a \in A, 
 
 Supremum: If there $\exists s \in B$ such that $\forall a \in A, a \leqslant s, \forall s' \in B, s \leqslant s'$. Then $s$ is the supremum of $A$, $s = sup(A)$.
 
-Least Upper Bound Property: If $U$ is an ordered set, then $U$ has the LUB property if every non-empty sunset of $U$ \textbf{that has an upper bound}, also has a supremum.
+Least Upper Bound Property: If $U$ is an ordered set, then $U$ has the LUB property if every non-empty subset of $U$ \textbf{that has an upper bound}, also has a supremum.
 
 The definition of lower-bound, infimum, largest-lower-bound property is similar.
 
@@ -572,18 +780,20 @@ If $A$ is infinite, then there $\exists X \subseteq A$ such that $|X| = |\mathbb
 If $A$ is countable and $X$ is infinite, then $A \cup X$ is also countable.\\
 
 Cantor's Theorem:
-For every set $A$, $|\mathbb{P}(A)| \neq |A|$ (Proof by contradiction)
+For every set $A$, $|\mathbb{P}(A)| \neq |A|$ (Proof by contradiction). Proof in \hyperlink{Cantor_proof}{\ref{Cantor_proof}}. \label{Cantor_theorem}\hypertarget{Cantor_theorem}{}
 
 Tarski's Theorem:
 %需要进一步解释 %"Btw, I'm not going to give you questions that are this hard in the exams"
-Let $X$ be a set. A function $h: \mathbb{P}(X)\mapsto \mathbb{P}(X)$ such that if $A \subseteq B$, then $h(A) \subseteq h(B)$. There exists $C \subseteq X$, such that $h(C)=C$
+Let $X$ be a set. A function $h: \mathbb{P}(X)\mapsto \mathbb{P}(X)$ such that if $A \subseteq B$, then $h(A) \subseteq h(B)$. There exists $C \subseteq X$, such that $h(C)=C$. Proof in \hyperlink{Tarski_proof}{\ref{Tarski_proof}}. \label{Tarski_theorem}\hypertarget{Tarski_theorem}{}
 
 Schr\"odger-Bernstein's Theorem:
 If $|X| \leqslant |Y|$ and $|Y| \leqslant |X|$ then $|X| = |Y|$.\\
 
 $0\leqslant x < 1$ is a terminating/ repeating/ mixed decimal expansion, $\iff$ $x$ is a rational number.
 
-If $U$ is an ordered set, then $U$ has the largest-lower-bound property if $U$ also satisfies the largest-lower-bound property.
+If $U$ is an ordered set, then $U$ has the largest-lower-bound property if $U$ also satisfies the least-upper-bound property. This is because for every subset $A$ that is bounded below, $A \neq \emptyset$, so $L = \{x \in U| \forall a \in A, a \geq x\}$. Because $A$ has a lower bound, so $L \neq \emptyset$. By $U$ has the largest-lower-bound property, there exists $\alpha = inf(A)$. It's easy to see that $\alpha$ is also the least-upper-bound of $L$. Therefore, every non-empty subset of $U$ has a least-upper-bound. Proved.
+
+$\mathbb{Q}$ does not have the supremum property, because in $A=\{x \in \mathbb{Q}| x^2<2\}$, $A$ have upper-bounds like 2,3,$\dots$, but the least upper bound does not exist, as $\sqrt{2} \notin \mathbb{Q}$
 
 $\mathbb{R}$ has the supremum property (Least-upper-bound property).
 
@@ -616,9 +826,21 @@ $\therefore |\mathbb{N}|\leqslant|\mathbb{Q}|$
 
 $\therefore |\mathbb{Q}| = |\mathbb{N}|$
 \subsection{$\mathbb{P}$ is countable}
-$f$ takes a finite sequence $a_1,a_2,\dots$, and maps it to $2^{a_1}\times3^{a_2}\times\dots\times p_i^{a_i} \times\dots$. Then, remove the 0s at the end of the sequence, set there are $i$ 0s removed. Let the set of all the finite sequences be $X$, and $\overline{X}$ is the set of all finite sequence with the end 0s removed. By the Arithmetic Fundamental Theorem, $f$ maps $\overline{X}$ to $\mathbb{N}$ and is one-to-one and onto. $g(X) = (i,f(\overline{X})$, $g:X \mapsto \mathbb{N}^2$ is one-to-one and onto. Therefore $\mathbb{P}$ is countable.
+$f$ takes a finite sequence $a_1,a_2,\dots$, and maps it to $2^{a_1}\times3^{a_2}\times\dots\times p_i^{a_i} \times\dots$. Then, remove the 0s at the end of the sequence, set there are $i$ 0s removed. Let the set of all the finite sequences be $X$, and $\overline{X}$ is the set of all finite sequence with the end 0s removed. By the Arithmetic Fundamental Theorem, $f$ maps $\overline{X}$ to $\mathbb{N}$ and is one-to-one and onto. $g(X) = (i,f(\overline{X}))$, $g:X \mapsto \mathbb{N}^2$ is one-to-one and onto. Therefore $\mathbb{P}$ is countable.
 
+\subsection{Cantor's Theorem}\label{Cantor_proof}
+\hyperlink{Cantor_theorem}{\ref{Cantor_theorem}}. \hypertarget{Cantor_proof}{}
 
+Let $g: A \rightarrow \mathbb{P}(A)$ be a bijection. There exists a set $T=\{x \in A| x \notin g(x)\}$, then $T$ is a element in $\mathbb{P}(A)$, i.e. $T \in \mathbb{P}(A)$. Because $g$ is a bijection, there exists $a\in A$ such that $g(a)=T$. For $a$, if $a \in g(a)$, then $a \notin T$, then there's a element in $T$ that is not in $T$, contradiction! If $a \notin g(a)$, then $a \in T$, then there's a element that is not in $T$ is in $T$, contradiction!
+
+\subsection{Tarski's Theorem}\label{Tarski_proof}
+\hyperlink{Tarski_theorem}{\ref{Tarski_theorem}}. \hypertarget{Tarski_proof}{}
+
+Let $X$ be a set and $h: \mathbb{P}(X) \rightarrow \mathbb{P}(X)$ be a function such that if $A \in B$ then $h(A) \in h(B)$. Define a set $A \in \mathbb{P}(X)$ is "expansive" if $A \subseteq h(A)$.
+
+Lemma: if $\Omega$ is a set of expansive sets, i.e. $\forall A \in Omega$, $A$ is expansive, then $\bigcup \Omega$ is expansive.
+
+Let $C = \bigcup\{A\in \mathbb{P}(X)| A \subseteq h(A)\}$ be all expansive sets. then by the lemma above, $C$ is also a expansive set, so $h(C)$ exists and $C \subseteq h(C)$. Because by the definition of $h$, $C \in h(C) \Rightarrow h(C) \in h(h(C))$, then $h(C)$ is a expansive set. So $h(C) \in C$, $h(C) = C$.
 \section{方法}
 \subsection{About sth. that is not countable}
 \subsubsection{Vitali Set}
@@ -661,7 +883,7 @@ Probability Space: A probability space $(S,E,Prob)$ is a measure space with tota
 
 Conditional Probability: $P(A|B) = \frac{P(A\cap B}{P(B)}$. It's also denoted as $P_B(A)$
 
-Independent sets: $A$ and $B$ are independent sets if $P(A|B) = P(A)$. Then, they satisfy: $P(AB) = P(A)\times P(B)$
+Independent events: $A$ and $B$ are independent events if $P(A|B) = P(A)$. Then, they satisfy: $P(AB) = P(A)\times P(B)$
 
 Random Variable: A function $X: S \mapsto \mathbb{R}$. We say $X$ is a discrete random variable if $range(X)$ is either finite or countable
 
@@ -680,10 +902,14 @@ Markov Chain(Definition using graphs): In $C = (G,\pi,v_0)$ where $G = (V,E)$ is
 
 Extension: Let $w$ be a finite walk on $G$, then $Ext(w) = \{\overline{w} \in G| \overline{w}$ is an infinite walk with prefix $w\}$
 
-B\"uchi set: There's a target set $T\subseteq V$. $A_i = \{w|w$ is a finite walk on $G$ and exists $i$ $k$s such that all $w[k] \in T\}$. $B_i = Ext(A_i)$. $A_i$ are countable sets, so $B_i$ re countable union of events. $B\ddot{u}chi(T) = \cap_{i=1}^n B_i$ is an event.
+B\"uchi set: There's a target set $T\subseteq V$. $A_i = \{w|w$ is a finite walk on $G$ and exists $i$ $k$s such that all $w[k] \in T\}$. $B_i = Ext(A_i)$. $A_i$ are countable sets, so $B_i$ are countable union of events. $B\ddot{u}chi(T) = \cap_{i=1}^n B_i$ is an event.
 %需要继续整理这块
 
-精神状态不正常了：反正就是B\"uchi(v)会无限次的经过v，然后可将一个非Strongly Connected 的graph切分成一堆Strongly Connected Component。在每一个SCC中，一定会有Bottom SCC，即只有ingoing没有outgoing edge。P（最后end up in BSCC） = 1。
+精神状态不正常了：反正就是B\"uchi(v)会无限次的经过v，然后可将一个非Strongly Connected 的graph切分成一堆Strongly Connected Component。在每一个SCC中，一定会有Bottom SCC，即只有ingoing没有outgoing edge。P（最后end up in BSCC） = 1。%这是彩蛋
+
+精神正常后的补充：在一个SCC中，若有一个$v$会被无限次经过，即B\"uchi(v)成立，假设$v'$是$v$的一个successor，那么有限次经过$v'$的概率=$p^n(1-p)^{\infty}$，趋近于0，所以$P(Buchi[v']|Buchi[v])=1$. By conditional probability, $P(Buchi[v'])\geq P(Buchi[v])$. 又因为 $\forall v \in SCC, S=\cup Buchi[v], P(S)=1$，所以肯定有一个$P(Buchi[v])=1$，那么$\forall v \in SCC, P(Buchi[v])=1$。
+
+在一个G中有很多SCC，其中必包含BSCC，那么$P(Buchi[v])$在$v\in BSCC$ 时与上一题相同，而$P(Buchi[v])$在$v \notin BSCC$时=0，因为最后肯定会卡在一个BSCC里，不在BSCC里的点必不会无限次经过
 
 \subsection{Markov decision process}
 State space $S$, Action space $A$, State Transitional Probability Matrix $Prob(u,v)$, Reward $Reward(e)$, Discount factor $\gamma$, Policy $Policy(u)$. Refer to an example in Hw4: 
@@ -818,7 +1044,7 @@ If a country pollutes, then he doesn't cost anything additional, but every count
 Every DAG have a topological ordering.
 
 \subsection{Sprague-Grundy Theorem}
-Assign a unber to every vertex in $G$: If $v$ has no outgoing edges, then assign $nim(v) = 0$. If $v$ has outgoing edges to $u_1,u_2,\dots,u_n$, then $nim(v) = max\{nim(u_1),nim(u_2),\dots, nim(u_n)\}+1$. Then $L = \{(a_1,a_2,\dots,a_n)|\oplus_{i=1}^n nim(a_i) = 0\}$ and $W = \{(a_1,a_2,\dots,a_n)|\oplus_{i=1}^n nim(a_i) \neq 0\}$
+Assign a number to every vertex in $G$: If $v$ has no outgoing edges, then assign $nim(v) = 0$. If $v$ has outgoing edges to $u_1,u_2,\dots,u_n$, then $nim(v) = max\{nim(u_1),nim(u_2),\dots, nim(u_n)\}+1$. Then $L = \{(a_1,a_2,\dots,a_n)|\oplus_{i=1}^n nim(a_i) = 0\}$ and $W = \{(a_1,a_2,\dots,a_n)|\oplus_{i=1}^n nim(a_i) \neq 0\}$
 
 \section{Algorithms}
 \subsubsection{Reachability game}
@@ -858,5 +1084,4 @@ At the end, $Win_2 = \cup_i C_i$, $Win_1 = V \setminus Win_2$\\
 %\end{figure}
 \section{重要定理详解}
 %可补充
-
 \end{document}

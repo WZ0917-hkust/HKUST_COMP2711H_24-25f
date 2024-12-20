@@ -19,22 +19,31 @@
 Counting, Permutations, Combinations, Balls and Walls, Principle of Inclusion and Exclusion, Generalized Principle of Inclusion and Exclusion, Pigeonhole Principle
 \section{定义}
 \subsection{Definition of 名词}
-Permutations: 排列. [n] = $\{1,2,\dots,n\}$\\$\indent$
-Onto:单射.\\$\indent$
+Permutations: 排列. [n] = $\{1,2,\dots,n\}$
+
+Onto:单射.
+
 \section{定理/结论}
 \subsection{几何意义}
-[n] has $2^{n}$ subsets\\$\indent$
-$\binom{n}{0} + \binom{n}{1} + \binom{n}{2} + \dots + \binom{n}{n} = 2^{n}$\\$\indent$
-$\sum_{i=0}^{n} (-1)^{n} \binom{n}{i} = 0$ $\Leftarrow$ even sized subsets=odd sized subsets\\$\indent$
-$n \binom{n-1}{k} = (k+1) \binom{n}{k+1}$ $\Leftarrow$ want to choose k+1 people from n people and designate a captain\\$\indent$
-$\star \binom{n}{r} = \binom{n-1}{r}+\binom{n-1}{r-1}$ $\Leftarrow$ number of subsets with an arbitrary element + without the element\\$\indent$
+[n] has $2^{n}$ subsets
+
+$\binom{n}{0} + \binom{n}{1} + \binom{n}{2} + \dots + \binom{n}{n} = 2^{n}$
+
+$\sum_{i=0}^{n} (-1)^{n} \binom{n}{i} = 0$ $\Leftarrow$ even sized subsets=odd sized subsets
+
+$n \binom{n-1}{k} = (k+1) \binom{n}{k+1}$ $\Leftarrow$ want to choose k+1 people from n people and designate a captain
+
+$\star \binom{n}{r} = \binom{n-1}{r}+\binom{n-1}{r-1}$ $\Leftarrow$ number of subsets with an arbitrary element + without the element
+
 $\sum_{0\leq j\leq i\leq n} \binom{n}{i}\binom{i}{j} = 3^{n}$ $\Leftarrow$ separate n into 3 parts\\$\indent$
 $\binom{n}{r} = \binom{n}{n-r}$
 \subsection{结论}
 for [n], how many permutations $\pi$ have the property $\forall i, \pi[i] \neq i$ : $d_{n} = (d_{n-1}+d_{n-2})(n-1)$
 \subsection{PIE}
-Principle of inclusion and exclusion(PIE): Find the whole number of elements in $A_{1} \sim A_{n}$. \\$\indent$
-Generalized PIE: Find the number of elements $E(m)$ appearing in exactly $m$ of $A_{1} \sim A_{n}$. \\$\indent$
+Principle of inclusion and exclusion(PIE): Find the whole number of elements in $A_{1} \sim A_{n}$. 
+
+Generalized PIE: Find the number of elements $E(m)$ appearing in exactly $m$ of $A_{1} \sim A_{n}$. 
+
 $\star$经典习题：6 persons, every pair is either friends or enemy.$\Rightarrow$There must exist 3 people who are friends to each other or enemies to each other.
 \section{重要定理详解}
 \subsection{PIE}
@@ -84,7 +93,7 @@ $\indent\star$题目较长的时候，要么用Pigeon-Hole Principle，要么用
 
 \section{例题}
 \subsection{插板法}
-How many solutions do we have if $x_1+x+2+x_3+x_4 = 10, x_i \in N$: We have 10 balls and 3 walls, we have $\binom{13}{3}$ solutions.
+How many solutions do we have if $x_1+x_2+x_3+x_4 = 10, x_i \in N$: We have 10 balls and 3 walls, we have $\binom{13}{3}$ solutions.
 
 \subsection{People sitting around circles}
 How many ways can $n$ people sit around $r$ circles: 
@@ -99,7 +108,7 @@ $d_0=1$, $d_1=0$, do induction, when adding a student, let that student sit in $
 
 Extension: How many permutations $\pi$ of $[n]$ have exactly $k$ fixed points? : First select $k$ elements from $n$ elements, then it's a permutation of $n-k$ elements which are not in their own places. Therefore, there's $d_{n,k}=\binom{n}{k} d_{n-k}$
 
-By PIE, let $S_i$ is the number of permutations that has $i$ fixed points, then the number of permutations where no $\pi[i]=i$ is $d_n=n! - (\sum_{i=1}^n (-1)^{n+1}\binom{n}{i} S_i) = \dots = n! \sum_{i=1}^n \frac{(-1)^{i}}{i!}$
+By PIE, let $S_i$ is the number of permutations that has $i$ fixed points, then the number of permutations where no $\pi[i]=i$ is \[d_n=n! - (\sum_{i=1}^n (-1)^{n+1}\binom{n}{i} S_i) = \dots = n! \sum_{i=1}^n \frac{(-1)^{i}}{i!}\]
 
 \subsubsection{How many functions from $[n]$ to $[m]$ are onto}
 Number of functions that do not cover the element $i$ in $[m]$ : $|A_i| = (m-1)^n$, then the number of functions that do not cover $k$ elements in $[m]$ are \[S_k = \binom{n}{k} |\cap_{i=a_1,a_2,\dots,a_k} A_i| = \binom{n}{k} (m-k)^n.\] The number of functions that are onto from $[n]$ to $[m]$ are \[O(n,m) = m^n-|\cup_{i=1}^m A_i| = m^n-(\sum_{i=1}^m (-1)^{i+1} S_i = m^n-(\sum_{i=1}^n (-1)^{i+1} \binom{n}{i}(m-i)^n\]

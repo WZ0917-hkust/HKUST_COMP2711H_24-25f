@@ -28,56 +28,78 @@ XOR: &"$\oplus$" $\rightarrow$ $a\oplus b$ means if $a == b$\\
 
 \end{tabular}
 
-$p \vee (q \wedge r) = (p \vee q) \wedge (p \vee r)$\\
-$\indent$ $p \wedge (q \vee r) = (p \wedge q) \vee (p \wedge r)$
+$p \vee (q \wedge r) = (p \vee q) \wedge (p \vee r)$
+
+$p \wedge (q \vee r) = (p \wedge q) \vee (p \wedge r)$
 
 \textbf{Quantifiers:}
 
-$\indent$Universal quantifier: $\forall$\\
-$\indent$ $\indent$Existential quantifier: $\exists$\\
+Universal quantifier: $\forall$
 
-$\neg \forall x, p(x) \iff \exists x, \neg p(x)$\\
-$\indent$ $\neg \exists x, p(x) \iff \forall x, \neg p(x)$\\
+$\indent$Existential quantifier: $\exists$\\
+
+$\neg \forall x, p(x) \iff \exists x, \neg p(x)$
+
+$\neg \exists x, p(x) \iff \forall x, \neg p(x)$\\
 
 $\forall n,m \in N, n \leq m \iff \exists x \in N, n+x = m$
 
 \subsection{Definitions of 专有名词}
-Tantology:恒成立\\
-$\indent$Predicate:猜想\\
-$\indent$Proposition:命题\\
-$\indent$Contradiction:矛盾
+Tantology:恒成立
+
+Predicate:猜想
+
+Proposition:命题
+
+Contradiction:矛盾
 
 \section{公理}
 Peano's Axioms:自然数公理 $\rightarrow$ 定义自然数
 \section{定理/结论}
-$\sqrt 2$ is irrarional. $\leftarrow$ proof by assumpution\\$\indent$
+$\sqrt 2$ is irrarional. $\leftarrow$ proof by assumpution.
+
 There is infinite amount of prime numbers. $\leftarrow$ proof by assuming finite amount of prime, then $k = \prod_{i=1}^{n}\, p_{i} + 1$, $k = a \times b, a \in \{p_{n}\}$, no infinite descending {$b_{n}$}.\\
 
-\noindent In Fibonnacci numbers, $F_{0} = 0; F_{1} = 1$\\$\indent$
-$\sum_{i = 1}^{n} F_{i} = F_{n+2}-1$\\$\indent$
-$\forall n \in N, F_{1}+F_{3}+F_{5}+\dots +F_{2n-1} = F_{2n}-1$\\$\indent$
-$\forall n \in N, F_{2}+F_{4}+F_{6}+\dots +F_{2n} = F_{2n+1}-1$\\$\indent$
+\noindent In Fibonnacci numbers, $F_{0} = 0; F_{1} = 1$
+
+$\sum_{i = 1}^{n} F_{i} = F_{n+2}-1$
+
+$\forall n \in N, F_{1}+F_{3}+F_{5}+\dots +F_{2n-1} = F_{2n}-1$
+
+$\forall n \in N, F_{2}+F_{4}+F_{6}+\dots +F_{2n} = F_{2n+1}-1$
+
 $F_{n}$ and $F_{n+1}$ are relatively prime.\\
 
 \noindent $\forall n \geq 1, \, 1^{3}+2^{3}+\dots + n^{3} = (1+2+ \dots +n)^{2}$
 \section{重要定理详解}
-\noindent Peano's axioms: \\$\indent$
-a) 0 is a natural number. \\$\indent$
-b) Every natural number has a successor $s(n)$. \\$\indent$
-c) For all $n,m \in N$, if $s(n) = s(m)$, then $n = m$. \\$\indent$
-d) For every natural number $n$, the successor of n is not 0. \\$\indent$
+\noindent Peano's axioms: 
+
+a) 0 is a natural number. 
+
+b) Every natural number has a successor $s(n)$. 
+
+c) For all $n,m \in N$, if $s(n) = s(m)$, then $n = m$. 
+
+d) For every natural number $n$, the successor of n is not 0. 
+
 e) If $K$ is a set such that $0 \in K, \forall n \in N, n \in K \Rightarrow s(n) \in K$, then $K = N$
 
-\noindent "+":\\$\indent$
-a) $\forall n \in N, n+0 = n$\\$\indent$
+\noindent "+":
+
+a) $\forall n \in N, n+0 = n$
+
 b) $\forall n,m \in N, n+s(m) = s(n+m)$
 
-\noindent "$\times$":\\$\indent$
-a) $\forall n, n\times 0 = 0$\\$\indent$
+\noindent "$\times$":
+
+a) $\forall n, n\times 0 = 0$
+
 b) $\forall n,m \in N, n \times s(m) = n \times m + n$
 \section{方法}
-\noindent Mathematical induction (数学归纳法): If you want to show $\varphi(n)$ holds for $n \in N$ \\$\indent$
-a) Base case: the induction basis holds.($\varphi(0)$ holds)\\$\indent$
+\noindent Mathematical induction (数学归纳法): If you want to show $\varphi(n)$ holds for $n \in N$ 
+
+a) Base case: the induction basis holds.($\varphi(0)$ holds)
+
 b) Induction step: when $\varphi(n)$ holds, then $\varphi(n+1)$ holds\\
 Strong Induction: proof $\forall n \in N$ , $p(0) \wedge p(1) \wedge \dots \wedge p(n)$ holds $\Rightarrow p(n+1)$.\\
 Well-ordering principle: every non-empty subset $A$ of $N$ has a smallest element.\\

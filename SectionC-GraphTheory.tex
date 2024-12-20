@@ -11,6 +11,7 @@
 \usepackage{markdown}
 %\usepackage{china2e} 
 \usepackage[utf8]{inputenc}
+\usepackage{hyperref}
 \begin{document}
 \fi
 
@@ -87,7 +88,8 @@ Directed Acyclic Graphs(DAGs):"有向无环图"
 
 Topological Ordering: In a DAG, a permutation $\pi$ of vertices such that every edge $e\in E$ is of the form $(\pi(i),\pi(j))$,where $i\leq j$. In a topological Ordering, every vertex appear and only appear once, if there's a path $(u,v)$, then, $u$ is in front of $v$
 \subsection{Independent Set}
-Independent Set: A set $I\subseteq V$, such that for every $e \in E$, $e\notin I$\\$\indent$
+Independent Set: A set $I\subseteq V$, such that for every $e \in E$, $e\notin I$
+
 Maximum Independent Set: The largest possible size of a independent set.
 \subsection{Matching}
 Matching: A matching $M\subseteq E$ such that no two edges in $M$ share an endpoint.
@@ -193,7 +195,7 @@ Berge Theorem: A matching $M$ is maximum $\iff$ it does not have an augmenting p
 
 When $M$ has an augmenting path, then $|M'| = |M|+1$ must exist.
 
-Hall's Theorem: in a XY-bipartite graph, there's a matching $M$ saturating $X$ if and only if for$\forall S \subseteq X, |N(S)|\geq |X|$
+Hall's Theorem: in a XY-bipartite graph, there's a matching $M$ saturating $X$ if and only if for$\forall S \subseteq X, |N(S)|\geq |X|$. More proof in \hyperlink{Hall_proof}{\ref{Hall_proof}}. \label{Hall_theorem}\hypertarget{Hall_theorem}{}
 
 Corollary from Hall's Theorem: Let $G$ be a $k$-regular bipartite graph. ($k$-regular means $d(v) = k,v\in V$)($k\geq 1$).$G$ has a perfect matching.
 \subsection{Vertex Cover $\&$ Edge Cover}
@@ -270,7 +272,10 @@ First initialize all $f$ to 0, then find any path from $s$ to $t$ such that ever
 
 \noindent Greedy Colouring: pick any order for colouring, when colouring vertex $i$, assign the smallest colour number $j$ that's not in its neighbours.
 \section{重要定理证明}
-\noindent Hall's Theorem:\\$\indent$
+\noindent Hall's Theorem:
+
+Theorem in \hyperlink{Hall_theorem}{\ref{Hall_theorem}}. \label{Hall_proof}\hypertarget{Hall_proof}{}.
+
 "$\Rightarrow$": $\because$ It's a matching, $\therefore$ there must be at least one vertex in $Y$ that is a neighbour of a vertex in $X$, $|N(S)|\geq |S|$
 
 "$\Leftarrow$": 取逆否命题，即原命题的反命题:To proof="if maximum matching $M$ does not saturate $X$, then $|N(S)|<|S|$"

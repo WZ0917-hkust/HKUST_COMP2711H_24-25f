@@ -84,7 +84,7 @@ If a country pollutes, then he doesn't cost anything additional, but every count
 Every DAG have a topological ordering.
 
 \subsection{Sprague-Grundy Theorem}
-Assign a unber to every vertex in $G$: If $v$ has no outgoing edges, then assign $nim(v) = 0$. If $v$ has outgoing edges to $u_1,u_2,\dots,u_n$, then $nim(v) = max\{nim(u_1),nim(u_2),\dots, nim(u_n)\}+1$. Then $L = \{(a_1,a_2,\dots,a_n)|\oplus_{i=1}^n nim(a_i) = 0\}$ and $W = \{(a_1,a_2,\dots,a_n)|\oplus_{i=1}^n nim(a_i) \neq 0\}$
+Assign a number to every vertex in $G$: If $v$ has no outgoing edges, then assign $nim(v) = 0$. If $v$ has outgoing edges to $u_1,u_2,\dots,u_n$, then $nim(v) = max\{nim(u_1),nim(u_2),\dots, nim(u_n)\}+1$. Then $L = \{(a_1,a_2,\dots,a_n)|\oplus_{i=1}^n nim(a_i) = 0\}$ and $W = \{(a_1,a_2,\dots,a_n)|\oplus_{i=1}^n nim(a_i) \neq 0\}$
 
 \section{Algorithms}
 \subsubsection{Reachability game}

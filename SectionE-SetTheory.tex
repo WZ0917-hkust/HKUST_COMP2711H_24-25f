@@ -95,10 +95,13 @@ Infinite Sets: A set $X$ is infinite if $X$ is not finite.
 
 Cardinality(set的大小): Let $X$ and $Y$ be two sets, then $|X| = |Y|$ or $X\sim Y$ iff there is a bijection $f:X \leftrightarrow Y$. 
 
-Property of Cardinality: \\$\indent$
-$\forall X, X \sim X$\\$\indent$
-$\forall X,Y,Z, X\sim Y \wedge Y\sim Z \Rightarrow X \sim Z$\\$\indent$
-$\forall X,Y, X\sim Y \Leftrightarrow Y \sim X$
+Property of Cardinality: 
+
+$\;\forall X, X \sim X$
+
+$\;\forall X,Y,Z, X\sim Y \wedge Y\sim Z \Rightarrow X \sim Z$
+
+$\;\forall X,Y, X\sim Y \Leftrightarrow Y \sim X$
 
 $|X|\leqslant|Y|$ if there exists a one to one function that maps $X$ to $Y$
 
@@ -150,11 +153,11 @@ If $A$ is infinite, then there $\exists X \subseteq A$ such that $|X| = |\mathbb
 If $A$ is countable and $X$ is infinite, then $A \cup X$ is also countable.\\
 
 Cantor's Theorem:
-For every set $A$, $|\mathbb{P}(A)| \neq |A|$ (Proof by contradiction)
+For every set $A$, $|\mathbb{P}(A)| \neq |A|$ (Proof by contradiction). Proof in \hyperlink{Cantor_proof}{\ref{Cantor_proof}}. \label{Cantor_theorem}\hypertarget{Cantor_theorem}{}
 
 Tarski's Theorem:
 %需要进一步解释 %"Btw, I'm not going to give you questions that are this hard in the exams"
-Let $X$ be a set. A function $h: \mathbb{P}(X)\mapsto \mathbb{P}(X)$ such that if $A \subseteq B$, then $h(A) \subseteq h(B)$. There exists $C \subseteq X$, such that $h(C)=C$
+Let $X$ be a set. A function $h: \mathbb{P}(X)\mapsto \mathbb{P}(X)$ such that if $A \subseteq B$, then $h(A) \subseteq h(B)$. There exists $C \subseteq X$, such that $h(C)=C$. Proof in \hyperlink{Tarski_proof}{\ref{Tarski_proof}}. \label{Tarski_theorem}\hypertarget{Tarski_theorem}{}
 
 Schr\"odger-Bernstein's Theorem:
 If $|X| \leqslant |Y|$ and $|Y| \leqslant |X|$ then $|X| = |Y|$.\\
@@ -198,10 +201,14 @@ $\therefore |\mathbb{Q}| = |\mathbb{N}|$
 \subsection{$\mathbb{P}$ is countable}
 $f$ takes a finite sequence $a_1,a_2,\dots$, and maps it to $2^{a_1}\times3^{a_2}\times\dots\times p_i^{a_i} \times\dots$. Then, remove the 0s at the end of the sequence, set there are $i$ 0s removed. Let the set of all the finite sequences be $X$, and $\overline{X}$ is the set of all finite sequence with the end 0s removed. By the Arithmetic Fundamental Theorem, $f$ maps $\overline{X}$ to $\mathbb{N}$ and is one-to-one and onto. $g(X) = (i,f(\overline{X}))$, $g:X \mapsto \mathbb{N}^2$ is one-to-one and onto. Therefore $\mathbb{P}$ is countable.
 
-\subsection{Cantor's Theorem}
+\subsection{Cantor's Theorem}\label{Cantor_proof}
+\hyperlink{Cantor_theorem}{\ref{Cantor_theorem}}. \hypertarget{Cantor_proof}{}
+
 Let $g: A \rightarrow \mathbb{P}(A)$ be a bijection. There exists a set $T=\{x \in A| x \notin g(x)\}$, then $T$ is a element in $\mathbb{P}(A)$, i.e. $T \in \mathbb{P}(A)$. Because $g$ is a bijection, there exists $a\in A$ such that $g(a)=T$. For $a$, if $a \in g(a)$, then $a \notin T$, then there's a element in $T$ that is not in $T$, contradiction! If $a \notin g(a)$, then $a \in T$, then there's a element that is not in $T$ is in $T$, contradiction!
 
-\subsection{Tarski's Theorem}
+\subsection{Tarski's Theorem}\label{Tarski_proof}
+\hyperlink{Tarski_theorem}{\ref{Tarski_theorem}}. \hypertarget{Tarski_proof}{}
+
 Let $X$ be a set and $h: \mathbb{P}(X) \rightarrow \mathbb{P}(X)$ be a function such that if $A \in B$ then $h(A) \in h(B)$. Define a set $A \in \mathbb{P}(X)$ is "expansive" if $A \subseteq h(A)$.
 
 Lemma: if $\Omega$ is a set of expansive sets, i.e. $\forall A \in Omega$, $A$ is expansive, then $\bigcup \Omega$ is expansive.
